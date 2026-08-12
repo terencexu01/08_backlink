@@ -1740,3 +1740,635 @@ reddit:
     type: article
     auto: manual
     lang: en
+
+# ============================================================
+# Community-curated directories (from theshubh77/awesome-saas-directories, 125 new, added 2026-08-12)
+# Run scripts/probe-blogs.mjs-style liveness check before bulk submit
+# ============================================================
+community_curated_directories:
+
+  - name: "Launchdb"
+    submit_url: https://launchdb.vercel.app
+    type: form
+    auto: yes
+    lang: en
+  - name: "Aidirectori"
+    submit_url: https://www.aidirectori.es/pricing
+    type: form
+    auto: yes
+    lang: en
+  - name: "Saashub"
+    submit_url: https://www.saashub.com/services/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Toolify"
+    submit_url: https://www.toolify.ai/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Sell"
+    submit_url: https://sell.appsumo.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "Launch-mantra"
+    submit_url: https://launch-mantra.paperform.co
+    type: form
+    auto: yes
+    lang: en
+  - name: "Microsaasexamples"
+    submit_url: https://www.microsaasexamples.com/submit-micro-saas
+    type: form
+    auto: yes
+    lang: en
+  - name: "Peerlist"
+    submit_url: https://peerlist.io/launchpad
+    type: form
+    auto: yes
+    lang: en
+  - name: "Open-launch"
+    submit_url: https://open-launch.com/projects/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "A1"
+    submit_url: https://www.a1.gallery/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Tinylaunch"
+    submit_url: https://www.tinylaunch.com/dashboard/startups/new
+    type: form
+    auto: yes
+    lang: en
+  - name: "Resource"
+    submit_url: https://resource.fyi/account/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Fazier"
+    submit_url: https://fazier.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Ctrlalt"
+    submit_url: https://ctrlalt.cc
+    type: form
+    auto: yes
+    lang: en
+  - name: "Sideprojectors"
+    submit_url: https://www.sideprojectors.com/submit/type
+    type: form
+    auto: yes
+    lang: en
+  - name: "Trustmrr"
+    submit_url: https://trustmrr.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "Aixploria"
+    submit_url: https://www.aixploria.com/en/featured-on-aixploria
+    type: form
+    auto: yes
+    lang: en
+  - name: "Dodomrr"
+    submit_url: https://www.dodomrr.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "Trustroas"
+    submit_url: https://trustroas.com/add-store
+    type: form
+    auto: yes
+    lang: en
+  - name: "Turbo0"
+    submit_url: https://turbo0.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Versily"
+    submit_url: https://versily.com/start/product
+    type: form
+    auto: yes
+    lang: en
+  - name: "Aitools"
+    submit_url: https://aitools.inc/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Trylaunch"
+    submit_url: https://trylaunch.ai/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Auraplusplus"
+    submit_url: https://auraplusplus.com/projects/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Earlyhunt"
+    submit_url: https://earlyhunt.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Indiehunt"
+    submit_url: https://indiehunt.io/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Makerhunt"
+    submit_url: https://makerhunt.io/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Sidehunt"
+    submit_url: https://sidehunt.io/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Uno"
+    submit_url: https://uno.directory/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Scrolllaunch"
+    submit_url: https://www.scrolllaunch.com/dashboard/products/new
+    type: form
+    auto: yes
+    lang: en
+  - name: "Peerpush"
+    submit_url: https://peerpush.net/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Productburst"
+    submit_url: https://productburst.com/pre-launch
+    type: form
+    auto: yes
+    lang: en
+  - name: "Smollaunch"
+    submit_url: https://smollaunch.com/dashboard/products/new
+    type: form
+    auto: yes
+    lang: en
+  - name: "Nxgntools"
+    submit_url: https://www.nxgntools.com/~/my-tools
+    type: form
+    auto: yes
+    lang: en
+  - name: "Openhunts"
+    submit_url: https://openhunts.com/projects/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Whatlaunched"
+    submit_url: https://whatlaunched.today/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Listyouridea"
+    submit_url: https://listyouridea.com/launch
+    type: form
+    auto: yes
+    lang: en
+  - name: "Marketingdb"
+    submit_url: https://marketingdb.live/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Store"
+    submit_url: https://store.app/list
+    type: form
+    auto: yes
+    lang: en
+  - name: "Altern"
+    submit_url: https://altern.ai/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Wip"
+    submit_url: https://wip.co/settings/projects/new
+    type: form
+    auto: yes
+    lang: en
+  - name: "Stackshare"
+    submit_url: https://stackshare.io
+    type: form
+    auto: yes
+    lang: en
+  - name: "Startuplist"
+    submit_url: https://startuplist.ing/products/new
+    type: form
+    auto: yes
+    lang: en
+  - name: "Tinystartups"
+    submit_url: https://www.tinystartups.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Startupfa"
+    submit_url: https://startupfa.me/dashboard
+    type: form
+    auto: yes
+    lang: en
+  - name: "Builtbyindies"
+    submit_url: https://builtbyindies.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Launchigniter"
+    submit_url: https://launchigniter.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Startupfa"
+    submit_url: https://www.startupfa.st/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Toolsfine"
+    submit_url: https://toolsfine.com/submit-ai-tools-or-product
+    type: form
+    auto: yes
+    lang: en
+  - name: "Foundrlist"
+    submit_url: https://www.foundrlist.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Futuretools"
+    submit_url: https://futuretools.io/submit-a-tool
+    type: form
+    auto: yes
+    lang: en
+  - name: "Firsto"
+    submit_url: https://firsto.co/projects/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Shipybara"
+    submit_url: https://shipybara.com/projects/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Promoteproject"
+    submit_url: https://www.promoteproject.com/submit-startup
+    type: form
+    auto: yes
+    lang: en
+  - name: "Startuptrusted"
+    submit_url: https://startuptrusted.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Funneldirectory"
+    submit_url: https://funneldirectory.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Trust-revenue"
+    submit_url: https://trust-revenue.com/dashboard/startup
+    type: form
+    auto: yes
+    lang: en
+  - name: "Greenrocket"
+    submit_url: https://greenrocket.app/create
+    type: form
+    auto: yes
+    lang: en
+  - name: "Openalternative"
+    submit_url: https://openalternative.co/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Huzzler"
+    submit_url: https://huzzler.so/products/create
+    type: form
+    auto: yes
+    lang: en
+  - name: "Weliketools"
+    submit_url: https://weliketools.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "1000"
+    submit_url: https://1000.tools/my/tools/create
+    type: form
+    auto: yes
+    lang: en
+  - name: "Confettisaas"
+    submit_url: https://confettisaas.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Agentmrr"
+    submit_url: https://agentmrr.com/dashboard/agents
+    type: form
+    auto: yes
+    lang: en
+  - name: "Startuplibrary"
+    submit_url: https://startuplibrary.net/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Productwatch"
+    submit_url: https://productwatch.io/product/create
+    type: form
+    auto: yes
+    lang: en
+  - name: "Weekhack"
+    submit_url: https://www.weekhack.com/launches/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Aistage"
+    submit_url: https://aistage.net/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Aicenter"
+    submit_url: https://aicenter.ai/submit-tools
+    type: form
+    auto: yes
+    lang: en
+  - name: "Brouseai"
+    submit_url: https://www.brouseai.com/submission/ai
+    type: form
+    auto: yes
+    lang: en
+  - name: "Saasfame"
+    submit_url: https://saasfame.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Wired"
+    submit_url: https://wired.business/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Rankmyai"
+    submit_url: https://www.rankmyai.com/tool-addition
+    type: form
+    auto: yes
+    lang: en
+  - name: "Toolfame"
+    submit_url: https://toolfame.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Showmebest"
+    submit_url: https://showmebest.ai/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Neeed"
+    submit_url: https://neeed.directory/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Aidirs"
+    submit_url: https://aidirs.best/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Whattheai"
+    submit_url: https://whattheai.tech/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Waildworld"
+    submit_url: https://waildworld.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "Devpages"
+    submit_url: https://devpages.io/submit-a-tool
+    type: form
+    auto: yes
+    lang: en
+  - name: "Aitoolscapital"
+    submit_url: https://aitoolscapital.com/submit-tool
+    type: form
+    auto: yes
+    lang: en
+  - name: "Webspot"
+    submit_url: https://webspot.app/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Buildvoyage"
+    submit_url: https://buildvoyage.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Aipulse"
+    submit_url: https://www.aipulse.fyi/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Aitoolsaver"
+    submit_url: https://www.aitoolsaver.com/submit-ai-tool
+    type: form
+    auto: yes
+    lang: en
+  - name: "Aihustle"
+    submit_url: https://aihustle.tools/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Bowora"
+    submit_url: https://bowora.com/register
+    type: form
+    auto: yes
+    lang: en
+  - name: "Shipordie"
+    submit_url: https://shipordie.club/leaderboard
+    type: form
+    auto: yes
+    lang: en
+  - name: "Submitmatic"
+    submit_url: https://submitmatic.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Saasaitools"
+    submit_url: https://saasaitools.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Findyoursaas"
+    submit_url: https://www.findyoursaas.com/onboard
+    type: form
+    auto: yes
+    lang: en
+  - name: "Aitoolssme"
+    submit_url: https://www.aitoolssme.com/submit-your-tool
+    type: form
+    auto: yes
+    lang: en
+  - name: "Launchpadindia"
+    submit_url: https://launchpadindia.co/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Builders"
+    submit_url: https://builders.to/projects/new
+    type: form
+    auto: yes
+    lang: en
+  - name: "Superlaun"
+    submit_url: https://www.superlaun.ch/dashboard/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Topaitools4u"
+    submit_url: https://www.topaitools4u.site/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Shipboost"
+    submit_url: https://shipboost.io/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "App"
+    submit_url: https://app.aibase.com/submission
+    type: form
+    auto: yes
+    lang: en
+  - name: "Forg"
+    submit_url: https://forg.to/product/new
+    type: form
+    auto: yes
+    lang: en
+  - name: "Tools"
+    submit_url: https://tools.launchllama.co
+    type: form
+    auto: yes
+    lang: en
+  - name: "Usefuturestack"
+    submit_url: https://www.usefuturestack.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Productfame"
+    submit_url: https://productfame.com/products/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Liftoapp"
+    submit_url: https://liftoapp.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Findly"
+    submit_url: https://findly.tools/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Verifiedtools"
+    submit_url: https://www.verifiedtools.info/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Betterlaunch"
+    submit_url: https://www.betterlaunch.co/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Buildhop"
+    submit_url: https://buildhop.io/app/create
+    type: form
+    auto: yes
+    lang: en
+  - name: "Saaspa"
+    submit_url: https://www.saaspa.ge/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Prolaunch"
+    submit_url: https://prolaunch.net/projects/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Productivity"
+    submit_url: https://productivity.directory/s/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Launchpact"
+    submit_url: https://www.launchpact.io/launches/new
+    type: form
+    auto: yes
+    lang: en
+  - name: "Toolfio"
+    submit_url: https://toolfio.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Toolfolio"
+    submit_url: https://toolfolio.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "Ogfolio"
+    submit_url: https://ogfolio.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "Startup"
+    submit_url: https://www.startup.sx/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Revispy"
+    submit_url: https://www.revispy.com/launchpad/create
+    type: form
+    auto: yes
+    lang: en
+  - name: "Justlaunched"
+    submit_url: https://justlaunched.fyi/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Opensourceprojects"
+    submit_url: https://opensourceprojects.cc/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Saascity"
+    submit_url: https://saascity.io/saascity
+    type: form
+    auto: yes
+    lang: en
+  - name: "Startupaideas"
+    submit_url: https://startupaideas.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Findthatsoftware"
+    submit_url: https://findthatsoftware.com/vendors
+    type: form
+    auto: yes
+    lang: en
+  - name: "Mydentify"
+    submit_url: https://mydentify.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Aiwget"
+    submit_url: https://aiwget.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Craked"
+    submit_url: https://www.craked.dev/products
+    type: form
+    auto: yes
+    lang: en
+  - name: "Sidebar"
+    submit_url: https://sidebar.io/submit
+    type: form
+    auto: yes
+    lang: en
