@@ -8,7 +8,7 @@ import {
   getBlogCandidates,
 } from '../src/scheduler.js';
 
-const NOW = new Date('2026-08-12T10:00:00Z');
+const NOW = new Date();
 const DAY = 24 * 60 * 60 * 1000;
 const iso = d => new Date(d).toISOString();
 
