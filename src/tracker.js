@@ -63,3 +63,30 @@ export async function showStatus(opts = {}) {
     console.log(`  ${icon} ${s.site} — ${s.status} (${date})`);
   }
 }
+
+// --- Multi-project queries (interval scheduling) ---
+
+const ts = s => new Date(s.timestamp).getTime();
+
+export function getSiteLastSubmitDate(site, tracker = loadTracker()) {
+  const subs = (tracker.submissions || []).filter(s => s.site === site);
+  if (subs.length === 0) return null;
+  return new Date(Math.max(...subs.map(ts)));
+}
+
+export function isProjectSubmitted(project, site, tracker = loadTracker()) {
+  return (tracker.submissions || []).some(
+    s => s.project === project && s.site === site && s.status === 'submitted'
+  );
+}
+
+export function getBlogCommentStats(blogUrl, tracker = loadTracker()) {
+  const subs = (tracker.submissions || []).filter(
+    s => s.site === blogUrl && s.type === 'blog_comment'
+  );
+  return {
+    count: subs.length,
+    projects: subs.map(s => s.project),
+    lastDate: subs.length ? new Date(Math.max(...subs.map(ts))) : null,
+  };
+}
