@@ -18,7 +18,7 @@ const SUBMIT_PATTERNS = /submit|send|add|post|create|list|suggest|save/i;
  * Snapshot format: lines like "@3 [textbox] Name ..." or "@7 [button] Submit"
  */
 function parseSnapshot(snapshot) {
-  const fields = { name: null, url: null, email: null, description: null, submit: null };
+  const fields = { name: null, url: null, email: null, description: null, category: null, submit: null, pricingRadios: [] };
   const lines = snapshot.split('\n');
 
   let lastLabel = ''; // bb-browser 0.14 emits the human label and the textbox on separate rows
@@ -37,13 +37,22 @@ function parseSnapshot(snapshot) {
     // placeholder — bb-browser 0.14 puts the human label on its own row.
     const labelText = (lastLabel || labelLower);
 
-    // Match input/textarea fields
+    // Text fields. Name: prefer specific (tool/product/app name) over generic
+    // "Your Name" — hold generic as a fallback, let specific win.
     if (role === 'textbox' || role === 'combobox') {
-      if (!fields.name && FIELD_PATTERNS.name.test(labelText)) fields.name = ref;
+      if (/tool.?name|product.?name|app.?name/i.test(labelText)) fields.name = ref;
+      else if (/\bname\b/i.test(labelText) && !fields._nameFallback) fields._nameFallback = ref;
       else if (!fields.url && FIELD_PATTERNS.url.test(labelText)) fields.url = ref;
       else if (!fields.email && FIELD_PATTERNS.email.test(labelText)) fields.email = ref;
       else if (!fields.description && FIELD_PATTERNS.description.test(labelText)) fields.description = ref;
+      // Category dropdown
+      if (role === 'combobox' && /categor/i.test(labelText) && !fields.category) fields.category = ref;
       lastLabel = '';
+    }
+
+    // Pricing radios (free/freemium/paid) — collect all, pick the match at submit time
+    if (role === 'radio' && /free|freemium|paid|premium/i.test(labelLower)) {
+      fields.pricingRadios.push({ ref, value: labelLower });
     }
 
     // Match submit button
@@ -51,6 +60,10 @@ function parseSnapshot(snapshot) {
       if (!fields.submit) fields.submit = ref;
     }
   }
+
+  // Fallback: if no specific tool/product name field, use the generic "name" one
+  if (!fields.name && fields._nameFallback) fields.name = fields._nameFallback;
+  delete fields._nameFallback;
 
   return fields;
 }
@@ -99,8 +112,8 @@ export default {
       const fields = parseSnapshot(snapshot);
 
       const detected = Object.entries(fields)
-        .filter(([, v]) => v)
-        .map(([k, v]) => `${k}=${v}`)
+        .filter(([k, v]) => (k === 'pricingRadios' ? v.length > 0 : v))
+        .map(([k, v]) => (k === 'pricingRadios' ? `pricing=${v.length} radios` : `${k}=${v}`))
         .join(', ');
       console.log(`  📋 Detected: ${detected || 'none'}`);
 
@@ -133,6 +146,42 @@ export default {
         console.log(`  ✏️  Filling description`);
         await page.fill(fields.description, desc);
         await delay(300);
+      }
+
+      // 3b. Category dropdown — read options, fuzzy-match product.categories
+      if (fields.category) {
+        try {
+          const optionsJson = await page.eval(`JSON.stringify(Array.from(document.querySelector('select')?.options || []).map(o => ({ text: o.text.trim(), value: o.value })).filter(o => o.text))`);
+          const options = JSON.parse(optionsJson);
+          const wants = (product.categories || []).map(c => c.toLowerCase());
+          let match = null;
+          for (const want of wants) {
+            match = options.find(o => o.text.toLowerCase().includes(want) || want.includes(o.text.toLowerCase().split(/[\s-]/)[0]));
+            if (match) break;
+          }
+          if (match) {
+            await page.select(fields.category, match.value || match.text);
+            console.log(`  ✏️  Selecting category: ${match.text}`);
+            await delay(300);
+          } else {
+            console.log(`  ⚠️  Category: no match for [${wants.join(',')}] in [${options.map(o => o.text).slice(0, 6).join(' | ')}] — set manually`);
+          }
+        } catch (e) {
+          console.log(`  ⚠️  Category select failed: ${(e.message || '').split('\n')[0]}`);
+        }
+      }
+
+      // 3c. Pricing radio — click the option matching product.pricing
+      if (fields.pricingRadios.length && product.pricing) {
+        const want = product.pricing.toLowerCase();
+        const radio = fields.pricingRadios.find(r => r.value === want)
+          || fields.pricingRadios.find(r => r.value.includes(want) || want.includes(r.value))
+          || fields.pricingRadios.find(r => r.value.includes('free')); // default to a free tier
+        if (radio) {
+          console.log(`  ✏️  Selecting pricing: ${radio.value}`);
+          await page.click(radio.ref);
+          await delay(300);
+        }
       }
 
       // 4. Screenshot before submit

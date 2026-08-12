@@ -146,6 +146,18 @@ export class BbPage {
     }
   }
 
+  async select(selectorOrRef, value) {
+    if (selectorOrRef.startsWith('@')) {
+      bb('select', selectorOrRef, value);
+    } else {
+      throw new Error('select by CSS not supported, use a ref from snapshot');
+    }
+  }
+
+  async eval(js) {
+    return bb('eval', js);
+  }
+
   async click(selectorOrRef) {
     if (selectorOrRef.startsWith('@')) {
       bb('click', selectorOrRef);
