@@ -79,11 +79,11 @@ function pickRandom(arr) {
 }
 
 // Load resources — supports both flat array and { profiles, blog_comments } format
-function loadResources() {
-  if (!existsSync('resources/backlink-resources.json')) {
-    console.error('❌ resources/backlink-resources.json not found.');
-    console.error('   Copy the example file and add your target blogs:');
-    console.error('   cp resources/backlink-resources.example.json resources/backlink-resources.json');
+function loadResources(resourceFile = 'resources/backlink-resources.json') {
+  if (!existsSync(resourceFile)) {
+    console.error(`❌ ${resourceFile} not found.`);
+    console.error('   For the default pool: cp resources/backlink-resources.example.json resources/backlink-resources.json');
+    console.error('   Or pass --resources <path> to use a specific pool (e.g. resources/game-blogs.json)');
     process.exit(1);
   }
   if (!existsSync('resources/sites.json')) {
@@ -92,7 +92,7 @@ function loadResources() {
     process.exit(1);
   }
 
-  const raw = JSON.parse(readFileSync('resources/backlink-resources.json', 'utf-8'));
+  const raw = JSON.parse(readFileSync(resourceFile, 'utf-8'));
   const sites = JSON.parse(readFileSync('resources/sites.json', 'utf-8'));
 
   let allResources;
@@ -455,7 +455,7 @@ async function batchSubmit(opts = {}) {
     return;
   }
 
-  const { resources, sites } = loadResources();
+  const { resources, sites } = loadResources(opts.resourceFile);
   const log = loadLog();
   const globalHistory = loadGlobalHistory();
 
@@ -556,6 +556,7 @@ if (fileURLToPath(import.meta.url) === process.argv[1]) {
     else if (args[i] === '--engine') { opts.engine = args[++i]; }
     else if (args[i] === '--project') { opts.project = args[++i]; }
     else if (args[i] === '--from-review') { opts.reviewFile = args[++i]; }
+    else if (args[i] === '--resources') { opts.resourceFile = args[++i]; }
     else if (args[i] === '--dry-run') { opts.dryRun = true; }
   }
 

@@ -1,0 +1,35 @@
+[
+  {
+    "type": "blog_comment",
+    "url": "https://inspirationtopublication.wordpress.com/2011/06/05/step-29-the-big-wait-for-board-game-publishers-to-respond/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "status": "pending",
+    "submitted": false,
+    "theme": "board-game",
+    "verified_at": "2026-08-12"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://cliosboardgames.wordpress.com/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "status": "pending",
+    "submitted": false,
+    "theme": "board-game",
+    "verified_at": "2026-08-12"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://cardboardgamereview.wordpress.com/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "status": "pending",
+    "submitted": false,
+    "theme": "board-game",
+    "verified_at": "2026-08-12"
+  }
+]
