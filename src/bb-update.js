@@ -2,6 +2,7 @@
 
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'fs';
 import { execFileSync } from 'child_process';
+import { getBbCliPath } from './bb.js';
 
 const TIMESTAMP_FILE = 'logs/bb-update-last.txt';
 const DEFAULT_INTERVAL_HOURS = 24;
@@ -23,7 +24,7 @@ export async function maybeUpdateBbSites(config = {}) {
 
   console.log('🔄 Updating bb-browser site adapters...');
   try {
-    execFileSync('bb-browser', ['site', 'update'], {
+    execFileSync(process.execPath, [getBbCliPath(), 'site', 'update'], {
       encoding: 'utf-8',
       timeout: 60000,
       stdio: 'pipe',
@@ -44,7 +45,7 @@ export async function maybeUpdateBbSites(config = {}) {
 export function forceUpdate() {
   console.log('🔄 Updating bb-browser site adapters...');
   try {
-    execFileSync('bb-browser', ['site', 'update'], {
+    execFileSync(process.execPath, [getBbCliPath(), 'site', 'update'], {
       encoding: 'utf-8',
       timeout: 60000,
       stdio: 'inherit',

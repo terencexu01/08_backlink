@@ -2,6 +2,8 @@
 // Wraps bb-browser CLI as subprocess calls, exposes Playwright-like page API
 
 import { execFileSync } from 'child_process';
+import { existsSync } from 'fs';
+import { join } from 'path';
 
 let _bbTimeout = 30000;
 
@@ -9,9 +11,35 @@ function setBbTimeout(ms) {
   if (ms && ms > 0) _bbTimeout = ms;
 }
 
+// Resolve bb-browser's actual JS entry, bypassing the npm .cmd shim.
+// spawnSync/execFileSync cannot launch the .cmd shim on Windows without
+// shell:true, and shell:true would corrupt args containing URLs/JS/selectors.
+// Calling the cli.js directly via the current node is cross-platform and safe.
+let _bbCliPath = null;
+export function getBbCliPath() {
+  if (_bbCliPath) return _bbCliPath;
+  const npmRoot = execFileSync('npm', ['root', '-g'], { encoding: 'utf-8', shell: true }).trim();
+  const p = join(npmRoot, 'bb-browser', 'dist', 'cli.js');
+  if (!existsSync(p)) {
+    throw new Error(`bb-browser not found at ${p}. Install it: npm install -g bb-browser`);
+  }
+  _bbCliPath = p;
+  return p;
+}
+
+// bb-browser 0.14+ requires --tab on every page-action command. Track the
+// active tab at module level (one session per process) and auto-append it.
+const TAB_REQUIRED_CMDS = new Set([
+  'snap', 'snapshot', 'click', 'hover', 'fill', 'type', 'check', 'uncheck',
+  'select', 'press', 'scroll', 'eval', 'screenshot', 'get', 'close', 'goto',
+]);
+let _activeTab = null;
+
 function bb(...args) {
+  const fullArgs = (_activeTab && TAB_REQUIRED_CMDS.has(args[0]))
+    ? [...args, '--tab', _activeTab] : args;
   try {
-    return execFileSync('bb-browser', args, {
+    return execFileSync(process.execPath, [getBbCliPath(), ...fullArgs], {
       encoding: 'utf-8',
       timeout: _bbTimeout,
     }).trim();
@@ -44,7 +72,7 @@ function escapeJs(str) {
  */
 export function isBbAvailable() {
   try {
-    execFileSync('which', ['bb-browser'], { encoding: 'utf-8' });
+    execFileSync(process.execPath, [getBbCliPath(), '--version'], { encoding: 'utf-8' });
     return true;
   } catch { return false; }
 }
@@ -87,10 +115,11 @@ export class BbPage {
   async goto(url, _opts = {}) {
     const result = bb('open', url, '--tab');
     // Extract tabId from output like "Tab ID: XXXX"
-    const tabMatch = result.match(/Tab ID:\s*(\S+)/);
+    const tabMatch = result.match(/tab(?:\s+id)?:\s*(\S+)/i);
     if (tabMatch) {
       this._tabId = tabMatch[1];
       this._openedTabs.push(this._tabId);
+      _activeTab = this._tabId;
     }
     // Wait for page to settle (no networkidle equivalent)
     await new Promise(r => setTimeout(r, 2000));
