@@ -1,0 +1,120 @@
+# Backlink Pilot — 多项目配置模板（6 项目：5 工具站 + 1 游戏站）
+#
+# 用法：照填 → 另存为 config.yaml
+# 字段分三档：✅必填  ⭐强烈建议  可选（留空即可）
+# 必填项缺了程序会直接退出（src/config.js 校验）
+
+projects:
+
+  # ============================================================
+  # 工具站 1  （✅ 五个工具站可共用同一个邮箱）
+  # ============================================================
+  - name: ""                              # ✅ 产品名
+    url: ""                               # ✅ 产品 URL（会自动追加 UTM）
+    description: ""                       # ✅ 一句话描述，< 160 字符（SEO meta）
+    long_description: |                   # ⭐ 2-3 句：功能 + 受众（awesome-list、长描述框用）
+
+    email: ""                             # ✅ 联系邮箱（5 个工具站可填同一个）
+    categories: []                        # ⭐ 标准分类，如 [developer-tools, productivity]
+    pricing: free                         # ⭐ free | freemium | paid
+    logo_url: ""                          # ⭐ logo 直链（大量目录站必填）
+    github_url: ""                        # ⭐ 仓库 URL，没有留空
+    features: []                          # 可选，3 条核心特色，如 ["Instant convert", "No ads", "20+ units"]
+    twitter: ""                           # 可选
+
+  # ============================================================
+  # 工具站 2
+  # ============================================================
+  - name: ""
+    url: ""
+    description: ""
+    long_description: |
+
+    email: ""
+    categories: []
+    pricing: free
+    logo_url: ""
+    github_url: ""
+    features: []
+    twitter: ""
+
+  # ============================================================
+  # 工具站 3
+  # ============================================================
+  - name: ""
+    url: ""
+    description: ""
+    long_description: |
+
+    email: ""
+    categories: []
+    pricing: free
+    logo_url: ""
+    github_url: ""
+    features: []
+    twitter: ""
+
+  # ============================================================
+  # 工具站 4
+  # ============================================================
+  - name: ""
+    url: ""
+    description: ""
+    long_description: |
+
+    email: ""
+    categories: []
+    pricing: free
+    logo_url: ""
+    github_url: ""
+    features: []
+    twitter: ""
+
+  # ============================================================
+  # 工具站 5
+  # ============================================================
+  - name: ""
+    url: ""
+    description: ""
+    long_description: |
+
+    email: ""
+    categories: []
+    pricing: free
+    logo_url: ""
+    github_url: ""
+    features: []
+    twitter: ""
+
+  # ============================================================
+  # 游戏站  ⚠️ 两处和工具站不同：邮箱专用、分类用游戏类
+  # ============================================================
+  - name: ""
+    url: ""
+    description: ""
+    long_description: |
+
+    email: ""                             # ⚠️ 必须是游戏站专用邮箱，不能和工具站相同（身份隔离）
+    categories: []                        # ⚠️ 用游戏类，如 [games, casual, puzzle, html5-games]
+    pricing: free
+    logo_url: ""
+    github_url: ""
+    features: []
+    twitter: ""
+
+# ============================================================
+# 全局配置（所有项目共用，一般不用改）
+# ============================================================
+browser:
+  engine: bb            # 始终用 bb（playwright 会被拦截）
+  timeout: 30000
+
+utm:
+  enabled: true         # false 可关掉 UTM 追踪参数（部分站拒收带参数的 URL）
+  medium: directory
+  campaign: backlink
+  # 注意：多项目下 base_url 已不需要，每个项目自动用自己的 url
+
+pacing:
+  min_interval_ms: 60000          # 不同站点之间至少 1 分钟
+  same_site_interval_ms: 3600000  # 同站重试至少 1 小时
