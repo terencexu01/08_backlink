@@ -7,7 +7,7 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { createSession, delay, humanType } from './browser.js';
 import { loadConfig, getProject } from './config.js';
 import { parseReviewFile, filterApproved } from './reviews.js';
-import { recordSubmission } from './tracker.js';
+import { recordSubmission, loadTracker } from './tracker.js';
 
 const TIMEOUT_MS = 30000;
 const MIN_DELAY = 15000;  // 15-45s between submissions
@@ -61,6 +61,16 @@ export function pickProjectEmail(projectName, config) {
 // the persona rotation for the name field. Pure — unit-tested.
 export function resolveEmail(emailOverride, persona) {
   return emailOverride || persona.email;
+}
+
+// Check whether a (blogUrl, project) pair was already successfully submitted as
+// a blog comment. Used by the --from-review branch to avoid double-posting on
+// partial-failure reruns. Pure — unit-tested.
+export function isBlogCommentSubmitted(blogUrl, project, tracker) {
+  return (tracker.submissions || []).some(
+    s => s.site === blogUrl && s.project === project
+      && s.type === 'blog_comment' && s.status === 'submitted'
+  );
 }
 
 function pickRandom(arr) {
@@ -418,9 +428,14 @@ async function batchSubmit(opts = {}) {
 
     const { page, close } = await createSession({ browser: { headless: true }, _engine: opts.engine });
     try {
+      const tracker = loadTracker();
       for (let i = 0; i < approved.length; i++) {
         const entry = approved[i];
         console.log(`[${i + 1}/${approved.length}] ${entry.project} → ${entry.blogUrl}`);
+        if (isBlogCommentSubmitted(entry.blogUrl, entry.project, tracker)) {
+          console.log('  ⏭️  Already submitted, skip');
+          continue;
+        }
         try {
           await submitFromReview(page, entry, config);
           recordSubmission(entry.blogUrl, 'submitted', {

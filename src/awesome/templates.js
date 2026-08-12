@@ -1,6 +1,6 @@
 // awesome/templates.js — Generate GitHub Issue bodies for awesome-list submissions
 
-import { utmUrl, utmUrlForProject, getProject } from '../config.js';
+import { utmUrlForProject, getProject } from '../config.js';
 
 // Pre-configured awesome-list targets
 const TARGETS = {

@@ -1,7 +1,7 @@
 // submit.js — Dispatch submissions to site-specific or generic adapters
 
 import { readdirSync } from 'fs';
-import { utmUrl, getProject, utmUrlForProject } from './config.js';
+import { getProject, utmUrlForProject } from './config.js';
 import { recordSubmission } from './tracker.js';
 
 // Resolve a project (by name, or first if omitted) and attach a utm_url for the given site.

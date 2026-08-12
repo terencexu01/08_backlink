@@ -1,7 +1,7 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, renameSync } from 'fs';
-import { pickProjectEmail, resolveEmail } from '../src/batch-submit.js';
+import { pickProjectEmail, resolveEmail, isBlogCommentSubmitted } from '../src/batch-submit.js';
 import { parseReviewFile, filterApproved } from '../src/reviews.js';
 
 describe('batch-submit resource loading', () => {
@@ -76,5 +76,60 @@ describe('resolveEmail', () => {
   it('falls back to the persona email when override is empty string', () => {
     // Documents the falsy semantics: '' is treated as "no override".
     assert.equal(resolveEmail('', persona), 'persona@x.io');
+  });
+});
+
+describe('isBlogCommentSubmitted', () => {
+  it('returns true when a matching submitted record exists', () => {
+    const tracker = {
+      submissions: [
+        { site: 'https://b.io/1', project: 'Game', type: 'blog_comment', status: 'submitted' },
+      ],
+    };
+    assert.equal(isBlogCommentSubmitted('https://b.io/1', 'Game', tracker), true);
+  });
+
+  it('returns false when the project differs', () => {
+    const tracker = {
+      submissions: [
+        { site: 'https://b.io/1', project: 'Other', type: 'blog_comment', status: 'submitted' },
+      ],
+    };
+    assert.equal(isBlogCommentSubmitted('https://b.io/1', 'Game', tracker), false);
+  });
+
+  it('returns false when the status is not submitted (e.g. failed)', () => {
+    const tracker = {
+      submissions: [
+        { site: 'https://b.io/1', project: 'Game', type: 'blog_comment', status: 'failed' },
+      ],
+    };
+    assert.equal(isBlogCommentSubmitted('https://b.io/1', 'Game', tracker), false);
+  });
+
+  it('returns false when the type is not blog_comment', () => {
+    const tracker = {
+      submissions: [
+        { site: 'https://b.io/1', project: 'Game', type: 'directory', status: 'submitted' },
+      ],
+    };
+    assert.equal(isBlogCommentSubmitted('https://b.io/1', 'Game', tracker), false);
+  });
+
+  it('returns false when the blog URL differs', () => {
+    const tracker = {
+      submissions: [
+        { site: 'https://other.io/x', project: 'Game', type: 'blog_comment', status: 'submitted' },
+      ],
+    };
+    assert.equal(isBlogCommentSubmitted('https://b.io/1', 'Game', tracker), false);
+  });
+
+  it('returns false for an empty tracker', () => {
+    assert.equal(isBlogCommentSubmitted('https://b.io/1', 'Game', { submissions: [] }), false);
+  });
+
+  it('returns false for a tracker with no submissions key', () => {
+    assert.equal(isBlogCommentSubmitted('https://b.io/1', 'Game', {}), false);
   });
 });
