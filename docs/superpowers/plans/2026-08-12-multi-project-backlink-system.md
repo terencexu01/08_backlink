@@ -1064,3 +1064,35 @@ git commit -m "feat(batch-submit): per-project email and --from-review submissio
 - `tests/submit-preflight.test.js` 可能引用 `config.product` — Task 5 Step 5 跑全量 `npm test` 时若失败，按新接口（`_projects` / `resolveProduct`）同步更新该测试。
 - `src/submit.js` 原来还引用 `utmUrl`（旧）— 本计划保留 `utmUrl` 不删，避免破坏 `tests/config.test.js`。
 - ESM 项目禁止 `require` — Task 6 测试中已标注改用顶部 `import`。
+
+---
+
+## 实现结果（2026-08-12 SDD 执行后）
+
+**状态：6 Task 全部通过审查 + opus 全分支 final review 裁定 Ready to merge。**
+
+9 commits（feat×6 + fix×3）：ee33e7c config / 8506e69 tracker / 547b543 scheduler / 2a67d17 scheduler测试时间炸弹fix / 009c77f reviews / f2413dc cli+submit / 183160f batch-submit / 3b08ff4 batch-submit守卫+游戏站邮箱隔离 / ccfd4ba dedup+删死代码import。
+
+**执行中修正的 4 处**（plan 代码的疏漏，fix loop 修掉）：
+1. Task 3 测试时间炸弹（钉死日期 → 改相对今天）
+2. Task 6 `submitFromReview` 缺"无提交按钮"守卫
+3. Task 6 游戏站邮箱隔离（`submitBlogComment` 加 `emailOverride`，`--project` 时用 `pickProjectEmail`）——SPEC §4.6 端到端落地
+4. final: `--from-review` 去重（`isBlogCommentSubmitted`）+ 删两处 unused `utmUrl` import
+
+**opus 裁定 SHIP-DEFERRED 的技术债**（非阻塞，未来改进）：
+1. `utmUrlForProject` 在 utm disabled + base_url 设置时返回 base_url 而非 project.url（config.js:58-59）——一行修
+2. `utmUrlForProject` 不 URL-encode source/medium/campaign（继承自旧 utmUrl）
+3. `utmUrlForProject` 不处理 project.url 已带 query string（继承）
+4. `loadConfig` 的 exit(1) 路径未单测
+5. `getBlogCandidates` 无 opts.limit（brief-mandated 不对称）
+6. reviews 测试仅 brief-verbatim，无 edge case 覆盖
+7. `commentMatch` 正则截断缺 `>` 前缀的续行
+8. cli `setActiveProject` 在 submit+awesome 重复（可抽 helper）
+9. 无 CLI 级 --project 集成测试（仅 resolveProduct 单测）
+10. `submitFromReview` 守卫 + 邮箱传递仅 smoke-test 可验证
+11. `submitFromReview` 无 captcha/评论关闭 检测
+12. 通用模板路径（游戏站博客）写 `logs/` 不写 `submissions.yaml` → tracker 查询看不到游戏站博客记录
+13. 6 个预存测试失败（deprecated adapter 文件缺失等）——baseline 就有，非本分支引入
+
+**待人工 smoke test**：`node src/batch-submit.js --project <游戏站> --limit 1 --engine bb` 跑一篇可评论博客，确认填入邮箱 = 该项目 config 的专用邮箱。
+
