@@ -5,6 +5,9 @@
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { createSession, delay, humanType } from './browser.js';
+import { loadConfig, getProject } from './config.js';
+import { parseReviewFile, filterApproved } from './reviews.js';
+import { recordSubmission } from './tracker.js';
 
 const TIMEOUT_MS = 30000;
 const MIN_DELAY = 15000;  // 15-45s between submissions
@@ -43,6 +46,14 @@ const PERSONAS = [
   { name: "Sam Rivera", email: "sam.r.creates@gmail.com" },
   { name: "Taylor Kim", email: "taylork.web@outlook.com" },
 ];
+
+// Pick the contact email for a project from config (replaces hardcoded PERSONAS
+// email for the tool-site review-file workflow).
+export function pickProjectEmail(projectName, config) {
+  const project = getProject(config, projectName);
+  if (!project) throw new Error(`Project "${projectName}" not found`);
+  return project.email;
+}
 
 function pickRandom(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
@@ -247,6 +258,53 @@ async function submitBlogComment(page, resource, site) {
   if (!submitted) throw new Error('No submit button found');
 }
 
+// Submit blog comments read from an approved review file (tool-site workflow).
+// Each approved entry: { project, blogUrl, comment }.
+async function submitFromReview(page, entry, config) {
+  const email = pickProjectEmail(entry.project, config);
+  await page.goto(entry.blogUrl, { waitUntil: 'domcontentloaded', timeout: TIMEOUT_MS });
+  await delay(2000);
+
+  const commentSelectors = [
+    'textarea[name="comment"]', 'textarea#comment',
+    'textarea[name*="comment" i]', 'textarea[placeholder*="comment" i]',
+  ];
+  let commentSelector = null;
+  for (const sel of commentSelectors) {
+    try { const el = await page.$(sel); if (el && await el.isVisible()) { commentSelector = sel; break; } }
+    catch { continue; }
+  }
+  if (!commentSelector) throw new Error('No comment field found');
+
+  await humanType(page, commentSelector, entry.comment);
+  await delay(300);
+
+  // Name + email (use project name as commenter display, project email)
+  for (const sel of ['input[name="author"]', 'input#author', 'input[name*="name" i]']) {
+    try { const el = await page.$(sel); if (el && await el.isVisible()) { await humanType(page, sel, entry.project); break; } }
+    catch { continue; }
+  }
+  await delay(200);
+  for (const sel of ['input[name="email"]', 'input#email', 'input[type="email"]']) {
+    try { const el = await page.$(sel); if (el && await el.isVisible()) { await humanType(page, sel, email); break; } }
+    catch { continue; }
+  }
+  await delay(200);
+
+  // Website field = the project's own URL (the backlink)
+  const project = getProject(config, entry.project);
+  for (const sel of ['input[name="url"]', 'input#url', 'input[name*="website" i]', 'input[type="url"]']) {
+    try { const el = await page.$(sel); if (el && await el.isVisible()) { await humanType(page, sel, project.url); break; } }
+    catch { continue; }
+  }
+  await delay(500);
+
+  for (const sel of ['input#submit', 'button[type="submit"]', 'button:has-text("Post Comment")', 'button:has-text("Submit")']) {
+    try { const btn = await page.$(sel); if (btn && await btn.isVisible()) { await btn.click(); await delay(3000); break; } }
+    catch { continue; }
+  }
+}
+
 // --- Blocker detection ---
 async function checkBlockers(page) {
   const html = await page.content().catch(() => '');
@@ -335,6 +393,36 @@ async function batchSubmit(opts = {}) {
   const dryRun = opts.dryRun || false;
 
   console.log('🚀 Batch Backlink Submission v2\n');
+
+  if (opts.reviewFile) {
+    const config = await loadConfig();
+    const raw = readFileSync(opts.reviewFile, 'utf-8');
+    const approved = filterApproved(parseReviewFile(raw));
+    console.log(`📝 Loaded ${approved.length} approved comments from ${opts.reviewFile}\n`);
+    if (approved.length === 0) { console.log('Nothing to submit.'); return; }
+
+    const { page, close } = await createSession({ browser: { headless: true }, _engine: opts.engine });
+    try {
+      for (let i = 0; i < approved.length; i++) {
+        const entry = approved[i];
+        console.log(`[${i + 1}/${approved.length}] ${entry.project} → ${entry.blogUrl}`);
+        try {
+          await submitFromReview(page, entry, config);
+          recordSubmission(entry.blogUrl, 'submitted', {
+            type: 'blog_comment', project: entry.project, url: entry.blogUrl,
+          });
+          console.log('  ✅ Submitted');
+        } catch (e) {
+          recordSubmission(entry.blogUrl, 'failed', {
+            type: 'blog_comment', project: entry.project, error: e.message,
+          });
+          console.log(`  ❌ ${e.message}`);
+        }
+        if (i < approved.length - 1) await delay(MIN_DELAY + Math.random() * (MAX_DELAY - MIN_DELAY));
+      }
+    } finally { await close(); }
+    return;
+  }
 
   const { resources, sites } = loadResources();
   const log = loadLog();
@@ -425,6 +513,8 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     if (args[i] === '--limit' || args[i] === '-l') { opts.limit = parseInt(args[++i], 10); }
     else if (args[i] === '--site' || args[i] === '-s') { opts.siteIndex = parseInt(args[++i], 10); }
     else if (args[i] === '--engine') { opts.engine = args[++i]; }
+    else if (args[i] === '--project') { opts.project = args[++i]; }
+    else if (args[i] === '--from-review') { opts.reviewFile = args[++i]; }
     else if (args[i] === '--dry-run') { opts.dryRun = true; }
   }
 

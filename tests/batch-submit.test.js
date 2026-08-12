@@ -1,6 +1,8 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, renameSync } from 'fs';
+import { pickProjectEmail } from '../src/batch-submit.js';
+import { parseReviewFile, filterApproved } from '../src/reviews.js';
 
 describe('batch-submit resource loading', () => {
   it('resources/backlink-resources.example.json exists', () => {
@@ -28,5 +30,34 @@ describe('batch-submit resource loading', () => {
     const sitesPath = 'resources/sites.json';
     assert.ok(existsSync(resourcePath) || true, 'guard should check existence');
     assert.ok(existsSync(sitesPath), 'sites.json should exist');
+  });
+});
+
+describe('pickProjectEmail', () => {
+  it('returns the project email from config', () => {
+    const config = { _projects: [{ name: 'Game', email: 'game-special@x.io' }] };
+    assert.equal(pickProjectEmail('Game', config), 'game-special@x.io');
+  });
+
+  it('throws when project missing', () => {
+    assert.throws(() => pickProjectEmail('Nope', { _projects: [] }), /not found/);
+  });
+});
+
+describe('--from-review approved extraction', () => {
+  it('only approved review entries get submitted', () => {
+    const file = `## ① A  →  https://b.io/1
+评论草稿：
+> good
+状态：☑ 通过
+
+## ② B  →  https://b.io/2
+评论草稿：
+> bad
+状态：☒ 打回
+`;
+    const approved = filterApproved(parseReviewFile(file));
+    assert.equal(approved.length, 1);
+    assert.equal(approved[0].project, 'A');
   });
 });
