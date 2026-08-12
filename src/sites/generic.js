@@ -21,19 +21,29 @@ function parseSnapshot(snapshot) {
   const fields = { name: null, url: null, email: null, description: null, submit: null };
   const lines = snapshot.split('\n');
 
+  let lastLabel = ''; // bb-browser 0.14 emits the human label and the textbox on separate rows
   for (const line of lines) {
-    const refMatch = line.match(/^.*?(@\d+)\s+\[(\w+)\]\s*(.*)$/);
+    // bb-browser 0.14 snap -i format: "<role> [ref=N] \"<label>\""
+    const refMatch = line.match(/^(\w+)\s+\[ref=(\d+)\]\s*"?(.*?)"?\s*$/);
     if (!refMatch) continue;
 
-    const [, ref, role, label] = refMatch;
+    const [, role, refNum, label] = refMatch;
+    const ref = '@' + refNum;
     const labelLower = label.toLowerCase();
+
+    if (role === 'label') { lastLabel = labelLower; continue; }
+
+    // For textbox/combobox, prefer the preceding label (field name) over the
+    // placeholder — bb-browser 0.14 puts the human label on its own row.
+    const labelText = (lastLabel || labelLower);
 
     // Match input/textarea fields
     if (role === 'textbox' || role === 'combobox') {
-      if (!fields.name && FIELD_PATTERNS.name.test(labelLower)) fields.name = ref;
-      else if (!fields.url && FIELD_PATTERNS.url.test(labelLower)) fields.url = ref;
-      else if (!fields.email && FIELD_PATTERNS.email.test(labelLower)) fields.email = ref;
-      else if (!fields.description && FIELD_PATTERNS.description.test(labelLower)) fields.description = ref;
+      if (!fields.name && FIELD_PATTERNS.name.test(labelText)) fields.name = ref;
+      else if (!fields.url && FIELD_PATTERNS.url.test(labelText)) fields.url = ref;
+      else if (!fields.email && FIELD_PATTERNS.email.test(labelText)) fields.email = ref;
+      else if (!fields.description && FIELD_PATTERNS.description.test(labelText)) fields.description = ref;
+      lastLabel = '';
     }
 
     // Match submit button

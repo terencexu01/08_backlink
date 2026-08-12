@@ -30,8 +30,8 @@ export function getBbCliPath() {
 // bb-browser 0.14+ requires --tab on every page-action command. Track the
 // active tab at module level (one session per process) and auto-append it.
 const TAB_REQUIRED_CMDS = new Set([
-  'snap', 'snapshot', 'click', 'hover', 'fill', 'type', 'check', 'uncheck',
-  'select', 'press', 'scroll', 'eval', 'screenshot', 'get', 'close', 'goto',
+  'snap', 'click', 'hover', 'fill', 'type', 'check', 'uncheck',
+  'select', 'press', 'scroll', 'eval', 'screenshot', 'get', 'goto',
 ]);
 let _activeTab = null;
 
@@ -130,7 +130,7 @@ export class BbPage {
    */
   async cleanup() {
     for (const tabId of this._openedTabs) {
-      try { bb('tab', 'close', tabId); } catch {}
+      try { bb('close', '--tab', tabId); } catch {}
     }
     this._openedTabs = [];
   }
@@ -182,7 +182,7 @@ export class BbPage {
    * Get interactive snapshot — returns parsed accessibility tree text
    */
   async snapshot() {
-    return bb('snapshot', '-i');
+    return bb('snap', '-i');
   }
 
   /**
