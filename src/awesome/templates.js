@@ -1,6 +1,6 @@
 // awesome/templates.js — Generate GitHub Issue bodies for awesome-list submissions
 
-import { utmUrl } from '../config.js';
+import { utmUrl, utmUrlForProject, getProject } from '../config.js';
 
 // Pre-configured awesome-list targets
 const TARGETS = {
@@ -93,10 +93,8 @@ export async function generateAwesomeIssue(repoKey, opts) {
     return;
   }
 
-  const product = {
-    ...config.product,
-    utm_url: utmUrl(config, 'github'),
-  };
+  const base = getProject(config, config._activeProject);
+  const product = { ...base, utm_url: utmUrlForProject(config, base, 'github') };
 
   const title = `Add ${product.name}`;
   const body = generateBody(product, target.template, target.repo);

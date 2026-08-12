@@ -1,8 +1,15 @@
 // submit.js — Dispatch submissions to site-specific or generic adapters
 
 import { readdirSync } from 'fs';
-import { utmUrl } from './config.js';
+import { utmUrl, getProject, utmUrlForProject } from './config.js';
 import { recordSubmission } from './tracker.js';
+
+// Resolve a project (by name, or first if omitted) and attach a utm_url for the given site.
+export function resolveProduct(config, projectName, site) {
+  const base = getProject(config, projectName);
+  if (!base) throw new Error(`Project "${projectName}" not found in config`);
+  return { ...base, utm_url: utmUrlForProject(config, base, site) };
+}
 
 // Dynamic import of site adapters
 async function loadAdapter(site) {
@@ -42,10 +49,7 @@ export async function submit(site, opts) {
   // Pass target URL for generic adapter
   if (adapter._targetUrl) config._targetUrl = adapter._targetUrl;
 
-  const product = {
-    ...config.product,
-    utm_url: utmUrl(config, site),
-  };
+  const product = resolveProduct(config, config._activeProject, site);
 
   console.log(`\n🚀 Submitting "${product.name}" to ${site}`);
   if (opts.dryRun) {
@@ -66,12 +70,12 @@ export async function submit(site, opts) {
         if (res.status === 404) {
           console.error(`❌ ${checkUrl} returned 404 — submit page no longer exists.`);
           console.log('   Try visiting the site root to find the new submit URL.');
-          recordSubmission(site, 'failed', { error: '404 — submit page gone' });
+          recordSubmission(site, 'failed', { project: product.name, error: '404 — submit page gone' });
           return;
         }
         if (res.status >= 500) {
           console.error(`❌ ${checkUrl} returned ${res.status} — site appears down.`);
-          recordSubmission(site, 'failed', { error: `HTTP ${res.status}` });
+          recordSubmission(site, 'failed', { project: product.name, error: `HTTP ${res.status}` });
           return;
         }
       }
@@ -81,13 +85,14 @@ export async function submit(site, opts) {
   try {
     const result = await adapter.submit(product, config);
     recordSubmission(site, 'submitted', {
+      project: product.name,
       url: result?.url,
       confirmation: result?.confirmation,
     });
     console.log(`✅ Submitted to ${site}!`);
     if (result?.confirmation) console.log(`  Confirmation: ${result.confirmation}`);
   } catch (e) {
-    recordSubmission(site, 'failed', { error: e.message });
+    recordSubmission(site, 'failed', { project: product.name, error: e.message });
     console.error(`❌ Failed: ${e.message}`);
   }
 }

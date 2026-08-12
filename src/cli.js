@@ -2,7 +2,7 @@
 // backlink-pilot CLI entry point
 
 import { Command } from 'commander';
-import { loadConfig } from './config.js';
+import { loadConfig, getProject, listProjects } from './config.js';
 import { scout } from './scout/discover.js';
 import { submit } from './submit.js';
 import { generateAwesomeIssue } from './awesome/templates.js';
@@ -35,8 +35,16 @@ program
   .option('--dry-run', 'Show what would be submitted without actually doing it')
   .option('--screenshot <path>', 'Save screenshot after submission')
   .option('--engine <engine>', 'Browser engine: bb or playwright')
+  .option('--project <name>', 'Which project to submit (default: first)')
   .action(async (site, opts) => {
     const config = await loadConfig();
+    if (opts.project) {
+      if (!getProject(config, opts.project)) {
+        console.error(`❌ Project "${opts.project}" not found. Available: ${listProjects(config).join(', ')}`);
+        process.exit(1);
+      }
+      config._activeProject = opts.project;
+    }
     if (opts.engine) config._engine = opts.engine;
     await submit(site, { ...opts, config });
   });
@@ -45,8 +53,16 @@ program
   .command('awesome <repo>')
   .description('Generate GitHub Issue body for an awesome-list submission')
   .option('--open', 'Open the issue creation page in browser')
+  .option('--project <name>', 'Which project to submit (default: first)')
   .action(async (repo, opts) => {
     const config = await loadConfig();
+    if (opts.project) {
+      if (!getProject(config, opts.project)) {
+        console.error(`❌ Project "${opts.project}" not found. Available: ${listProjects(config).join(', ')}`);
+        process.exit(1);
+      }
+      config._activeProject = opts.project;
+    }
     await generateAwesomeIssue(repo, { ...opts, config });
   });
 
