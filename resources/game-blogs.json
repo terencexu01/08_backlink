@@ -1,35 +1,35 @@
 [
   {
     "type": "blog_comment",
-    "url": "https://inspirationtopublication.wordpress.com/2011/06/05/step-29-the-big-wait-for-board-game-publishers-to-respond/",
+    "url": "https://stonemaiergames.com/an-open-letter-to-new-reviewers-of-board-games-from-a-tiny-publishing-company/comment-page-3/",
     "has_url_field": true,
     "has_captcha": false,
     "link_strategy": "url_field",
+    "theme": "board-game",
     "status": "pending",
     "submitted": false,
-    "theme": "board-game",
     "verified_at": "2026-08-12"
   },
   {
     "type": "blog_comment",
-    "url": "https://cliosboardgames.wordpress.com/",
+    "url": "https://virtualmoose.org/2023/12/13/finding-indie-games/",
     "has_url_field": true,
     "has_captcha": false,
     "link_strategy": "url_field",
+    "theme": "indie-game",
     "status": "pending",
     "submitted": false,
-    "theme": "board-game",
     "verified_at": "2026-08-12"
   },
   {
     "type": "blog_comment",
-    "url": "https://cardboardgamereview.wordpress.com/",
+    "url": "https://infinityretro.com/best-strategy-rpgs/",
     "has_url_field": true,
     "has_captcha": false,
     "link_strategy": "url_field",
+    "theme": "retro-strategy-rpg",
     "status": "pending",
     "submitted": false,
-    "theme": "board-game",
     "verified_at": "2026-08-12"
   }
 ]
