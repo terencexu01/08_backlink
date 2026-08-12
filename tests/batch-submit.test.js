@@ -1,7 +1,7 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, renameSync } from 'fs';
-import { pickProjectEmail } from '../src/batch-submit.js';
+import { pickProjectEmail, resolveEmail } from '../src/batch-submit.js';
 import { parseReviewFile, filterApproved } from '../src/reviews.js';
 
 describe('batch-submit resource loading', () => {
@@ -59,5 +59,22 @@ describe('--from-review approved extraction', () => {
     const approved = filterApproved(parseReviewFile(file));
     assert.equal(approved.length, 1);
     assert.equal(approved[0].project, 'A');
+  });
+});
+
+describe('resolveEmail', () => {
+  const persona = { name: 'Alex', email: 'persona@x.io' };
+
+  it('uses the override when provided', () => {
+    assert.equal(resolveEmail('game-special@x.io', persona), 'game-special@x.io');
+  });
+
+  it('falls back to the persona email when override is undefined', () => {
+    assert.equal(resolveEmail(undefined, persona), 'persona@x.io');
+  });
+
+  it('falls back to the persona email when override is empty string', () => {
+    // Documents the falsy semantics: '' is treated as "no override".
+    assert.equal(resolveEmail('', persona), 'persona@x.io');
   });
 });

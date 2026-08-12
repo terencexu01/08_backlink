@@ -55,6 +55,14 @@ export function pickProjectEmail(projectName, config) {
   return project.email;
 }
 
+// Resolve which email to use when filling a comment form.
+// Override wins; otherwise fall back to the persona's email. Exported so the
+// template flow can pass a project's dedicated email (SPEC §4.6) while keeping
+// the persona rotation for the name field. Pure — unit-tested.
+export function resolveEmail(emailOverride, persona) {
+  return emailOverride || persona.email;
+}
+
 function pickRandom(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
@@ -148,7 +156,10 @@ function isSubmitted(log, globalHistory, url) {
 }
 
 // --- Blog comment submission (v2: natural comments, URL in website field) ---
-async function submitBlogComment(page, resource, site) {
+// emailOverride (optional) — when passed (e.g. a project's dedicated email per
+// SPEC §4.6), replaces the hardcoded PERSONAS email. Name still comes from
+// persona rotation. Undefined → existing PERSONAS behavior preserved.
+async function submitBlogComment(page, resource, site, emailOverride) {
   const norm = normalizeResource(resource);
   await page.goto(norm.url, { waitUntil: 'domcontentloaded', timeout: TIMEOUT_MS });
   await delay(2000); // let lazy-loaded comment forms appear
@@ -180,6 +191,7 @@ async function submitBlogComment(page, resource, site) {
 
   // Pick a persona
   const persona = pickRandom(PERSONAS);
+  const email = resolveEmail(emailOverride, persona);
 
   // Fill name field
   const nameSelectors = [
@@ -207,7 +219,7 @@ async function submitBlogComment(page, resource, site) {
     try {
       const el = await page.$(sel);
       if (el && await el.isVisible()) {
-        await humanType(page, sel, persona.email);
+        await humanType(page, sel, email);
         break;
       }
     } catch (e) { continue; }
@@ -299,10 +311,13 @@ async function submitFromReview(page, entry, config) {
   }
   await delay(500);
 
-  for (const sel of ['input#submit', 'button[type="submit"]', 'button:has-text("Post Comment")', 'button:has-text("Submit")']) {
-    try { const btn = await page.$(sel); if (btn && await btn.isVisible()) { await btn.click(); await delay(3000); break; } }
+  const submitSelectors = ['input#submit', 'button[type="submit"]', 'button:has-text("Post Comment")', 'button:has-text("Submit")'];
+  let submitted = false;
+  for (const sel of submitSelectors) {
+    try { const btn = await page.$(sel); if (btn && await btn.isVisible()) { await btn.click(); submitted = true; await delay(3000); break; } }
     catch { continue; }
   }
+  if (!submitted) throw new Error('No submit button found');
 }
 
 // --- Blocker detection ---
@@ -324,7 +339,7 @@ async function checkBlockers(page) {
 }
 
 // --- Process a single resource ---
-async function processResource(resource, site, page, log) {
+async function processResource(resource, site, page, log, emailOverride) {
   const norm = normalizeResource(resource);
   const result = {
     url: norm.url,
@@ -355,7 +370,7 @@ async function processResource(resource, site, page, log) {
 
     // Navigate and check blockers
     if (norm.type === 'blog_comment') {
-      await submitBlogComment(page, resource, site);
+      await submitBlogComment(page, resource, site, emailOverride);
     } else {
       result.status = 'skipped';
       result.reason = 'unsupported_type';
@@ -428,6 +443,16 @@ async function batchSubmit(opts = {}) {
   const log = loadLog();
   const globalHistory = loadGlobalHistory();
 
+  // SPEC §4.6: when --project is supplied, send from that project's dedicated
+  // email instead of the hardcoded PERSONAS address. Computed once before the
+  // loop so a missing project fails fast before opening a browser.
+  let projectEmail;
+  if (opts.project) {
+    const config = await loadConfig();
+    projectEmail = pickProjectEmail(opts.project, config);
+    console.log(`📧 Using project email: ${projectEmail}`);
+  }
+
   // Rotate through sites
   const site = sites[siteIndex % sites.length];
   console.log(`📍 Target: ${site.name} (${site.url})`);
@@ -472,7 +497,7 @@ async function batchSubmit(opts = {}) {
       const resource = toProcess[i];
       console.log(`[${i + 1}/${toProcess.length}]`);
 
-      const result = await processResource(resource, site, page, log);
+      const result = await processResource(resource, site, page, log, projectEmail);
       log.submissions.push(result);
       saveLog(log);
 
