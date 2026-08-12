@@ -4,6 +4,7 @@
 // v2: Natural comments, URL in website field only, site rotation, priority ordering
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
+import { fileURLToPath } from 'url';
 import { createSession, delay, humanType } from './browser.js';
 import { loadConfig, getProject } from './config.js';
 import { parseReviewFile, filterApproved } from './reviews.js';
@@ -545,7 +546,7 @@ async function batchSubmit(opts = {}) {
 }
 
 // CLI
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (fileURLToPath(import.meta.url) === process.argv[1]) {
   const args = process.argv.slice(2);
   const opts = {};
 
