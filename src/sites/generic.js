@@ -83,7 +83,13 @@ export default {
       // 1. Navigate to submission page
       console.log(`  📄 Opening ${targetUrl}`);
       await page.goto(targetUrl);
-      await delay(2000);
+      // Wait for the form to render — many AI directories load the form via JS,
+      // so a fixed 2s delay misses it. Poll up to ~10s for any form element.
+      for (let i = 0; i < 10; i++) {
+        await delay(1000);
+        if (await page.$('input, textarea, form').catch(() => null)) break;
+      }
+      await delay(1000);
 
       // 1.5. Validate page — check for dead/login/paid pages
       const pageUrl = typeof page.url === 'function' ? page.url() : '';
