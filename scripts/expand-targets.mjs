@@ -8,7 +8,7 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { parse } from 'yaml';
 
-const SOURCE_REPO = 'theshubh77/awesome-saas-directories';
+const SOURCE_REPO = process.argv[2] || 'theshubh77/awesome-saas-directories';
 const TARGETS_FILE = 'targets.yaml';
 
 // 1. Fetch raw README (try main then master)

@@ -1,0 +1,24 @@
+[
+  {
+    "type": "blog_comment",
+    "url": "https://www.michaelagreiler.com/year-review-2024/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "ai-code-review",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-13"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://theserverlessedge.com/developer-productivity-it-wasnt-acceptable-in-the-80s/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "developer-productivity",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-13"
+  }
+]
