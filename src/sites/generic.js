@@ -68,6 +68,30 @@ export function parseSnapshot(snapshot) {
   return fields;
 }
 
+/**
+ * Try "Login with Google" — reuse the browser's existing Google session
+ * (the browser must already be logged into a Google account).
+ * Flow: click Login-with-Google → Google accountchooser (select account)
+ *       → consent (Continue) → back to site (logged in).
+ * Returns true if the OAuth flow ran (regardless of site-side callback success).
+ */
+async function tryGoogleLogin(page) {
+  const found = await page.eval(`(()=>{const l=[...document.querySelectorAll('a,button')].find(e=>/login with google|sign in with google|continue with google|google\\s*登录|使用\\s*google/i.test(e.textContent));if(!l)return 'no-google-login';if(l.href){location.href=l.href}else{l.click()}return 'clicked'})()`);
+  if (found === 'no-google-login') return false;
+  console.log('  🔑 Found "Login with Google" — running OAuth flow...');
+  await delay(6000); // redirect to Google accountchooser
+
+  // accountchooser: click the logged-in account
+  await page.eval(`(()=>{const acc=document.querySelector('[data-identifier],[data-email],li[data-email],div[data-identifier]');if(acc){acc.click();return 'account-selected'}return 'no-account'})()`);
+  await delay(6000); // → consent page
+
+  // consent: click Continue/Allow/Approve
+  await page.eval(`(()=>{const b=[...document.querySelectorAll('button,div[role=button]')].find(b=>/continue|继续|allow|允许|agree|同意|approve|授权/i.test(b.textContent));if(b){b.click();return 'consent'}return 'no-consent'})()`);
+  await delay(6000); // → back to site (logged in, hopefully)
+
+  return true;
+}
+
 export default {
   name: 'generic',
   url: null,
@@ -124,7 +148,25 @@ export default {
       console.log(`  📋 Detected: ${detected || 'none'}`);
 
       if (!fields.name && !fields.url && !fields.description) {
-        throw new Error('No recognizable form fields found. Use scout first.');
+        // No form visible — maybe the site requires login. Try "Login with Google"
+        // (reuses the browser's existing Google session, no registration needed).
+        console.log('  🔐 No form — trying Login with Google...');
+        const oauthDone = await tryGoogleLogin(page);
+        if (oauthDone) {
+          await delay(2000);
+          const snapshot2 = await page.snapshot();
+          Object.assign(fields, parseSnapshot(snapshot2));
+          const detected2 = Object.entries(fields)
+            .filter(([k, v]) => (k === 'pricingRadios' ? v.length > 0 : v))
+            .map(([k, v]) => (k === 'pricingRadios' ? `pricing=${v.length} radios` : `${k}=${v}`))
+            .join(', ');
+          console.log(`  📋 After Google login Detected: ${detected2 || 'none'}`);
+        }
+        if (!fields.name && !fields.url && !fields.description) {
+          throw new Error(oauthDone
+            ? 'No form even after Google login — site needs manual registration or OAuth is broken.'
+            : 'No recognizable form fields and no Login-with-Google option.');
+        }
       }
 
       // 3. Fill detected fields
