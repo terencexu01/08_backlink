@@ -17,7 +17,7 @@ const SUBMIT_PATTERNS = /submit|send|add|post|create|list|suggest|save/i;
  * Parse bb-browser snapshot output to find interactive elements
  * Snapshot format: lines like "@3 [textbox] Name ..." or "@7 [button] Submit"
  */
-function parseSnapshot(snapshot) {
+export function parseSnapshot(snapshot) {
   const fields = { name: null, url: null, email: null, description: null, category: null, submit: null, pricingRadios: [] };
   const lines = snapshot.split('\n');
 
@@ -200,7 +200,14 @@ export default {
       // 5. Submit
       if (fields.submit) {
         console.log(`  🚀 Clicking submit (${fields.submit})`);
-        await page.click(fields.submit);
+        try {
+          await page.click(fields.submit);
+        } catch (e) {
+          // bb-browser click @ref can fail (ref→xpath mapping breaks after fill);
+          // fallback to JS click on submit input/button
+          console.log(`  ⚠️  click @ref failed, fallback JS click`);
+          await page.eval(`(()=>{const el=document.querySelector('input[type=submit],button[type=submit]')||[...document.querySelectorAll('button')].find(b=>/submit|send|add|post/i.test(b.textContent));if(el){el.click();return 'clicked'}return 'no submit el'})()`);
+        }
         await delay(3000);
       } else {
         console.log('  ⚠️  No submit button found — form filled but not submitted');
