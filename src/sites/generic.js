@@ -92,6 +92,50 @@ async function tryGoogleLogin(page) {
   return true;
 }
 
+/**
+ * React-style form fill — when bb-browser snap can't detect fields (React inputs
+ * often aren't labeled as 'textbox' role), discover inputs via placeholder/name/
+ * aria-label and fill using the native value setter + input event (React-compatible).
+ * Returns count of fields filled.
+ */
+async function tryReactFill(page, product) {
+  const inputsJson = await page.eval(`JSON.stringify([...document.querySelectorAll('input[type=text],input[type=email],input[type=url],textarea')].map((el,i)=>({i,ph:el.placeholder||'',n:el.name||'',t:el.type,al:el.getAttribute('aria-label')||''})))`);
+  let inputs = [];
+  try { inputs = JSON.parse(inputsJson); } catch {}
+  if (!inputs.length) return 0;
+
+  const patterns = {
+    name: /name|title|product|tool/i,
+    url: /url|website|link|homepage|site/i,
+    email: /email|mail/i,
+    description: /desc|description|about|summary|detail|intro/i,
+  };
+  const used = new Set();
+  let filled = 0;
+  for (const [field, re] of Object.entries(patterns)) {
+    const value = field === 'name' ? product.name
+      : field === 'url' ? (product.utm_url || product.url)
+      : field === 'email' ? product.email
+      : (product.long_description || product.description);
+    if (!value) continue;
+    const match = inputs.find(inp => !used.has(inp.i) && re.test((inp.ph + ' ' + inp.n + ' ' + inp.al).toLowerCase()));
+    if (!match) continue;
+    used.add(match.i);
+    const res = await page.eval(`((idx, val) => {
+      const els = [...document.querySelectorAll('input[type=text],input[type=email],input[type=url],textarea')];
+      const el = els[idx]; if (!el) return 'no-el';
+      const proto = el.tagName === 'TEXTAREA' ? HTMLTextAreaElement.prototype : HTMLInputElement.prototype;
+      const setter = Object.getOwnPropertyDescriptor(proto, 'value').set;
+      setter.call(el, val);
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+      el.dispatchEvent(new Event('change', { bubbles: true }));
+      return 'filled';
+    })(${match.i}, ${JSON.stringify(value)})`);
+    if (res === 'filled') { console.log(`  ✏️  React fill ${field}`); filled++; }
+  }
+  return filled;
+}
+
 export default {
   name: 'generic',
   url: null,
@@ -163,9 +207,24 @@ export default {
           console.log(`  📋 After Google login Detected: ${detected2 || 'none'}`);
         }
         if (!fields.name && !fields.url && !fields.description) {
+          // Last resort: React-style fill (eval by placeholder/name, native setter + input event).
+          // Many directory sites use React inputs that bb-browser snap can't label as textbox.
+          console.log('  ⚛️ Trying React-style fill (eval by placeholder/name)...');
+          const filled = await tryReactFill(page, product);
+          if (filled >= 2) {
+            const sub = await page.eval(`(() => {
+              const s = document.querySelector('button[type=submit],input[type=submit]') ||
+                [...document.querySelectorAll('button')].find(b => /submit|send|add|post|发布/i.test(b.textContent));
+              if (s) { s.click(); return 'submitted'; }
+              return 'no-submit';
+            })()`);
+            await delay(3000);
+            console.log(`✅ Submitted (React fill, ${filled} fields, ${sub})`);
+            return { url: page.url(), confirmation: 'React submission completed — verify manually' };
+          }
           throw new Error(oauthDone
-            ? 'No form even after Google login — site needs manual registration or OAuth is broken.'
-            : 'No recognizable form fields and no Login-with-Google option.');
+            ? 'No form even after Google login + React fill — site needs manual registration.'
+            : 'No form fields (snap empty, no Google login, React fill failed).');
         }
       }
 
