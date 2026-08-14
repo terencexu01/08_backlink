@@ -2063,3 +2063,435 @@ community_curated_directories:
     type: form
     auto: yes
     lang: en
+
+# ============================================================
+# Community-curated directories (from sergiuchiriac/ai-directories, 85 new, added 2026-08-14)
+# Run scripts/probe-blogs.mjs-style liveness check before bulk submit
+# ============================================================
+community_curated_from_ai_directories:
+
+  - name: "1payment Tools"
+    submit_url: https://1payment.tools
+    type: form
+    auto: yes
+    lang: en
+  - name: "Aicombined"
+    submit_url: https://aicombined.com/add-listing
+    type: form
+    auto: yes
+    lang: en
+  - name: "Aidir"
+    submit_url: https://www.aidir.cc/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Aidude"
+    submit_url: https://aidude.info/submit-your-tool
+    type: form
+    auto: yes
+    lang: en
+  - name: "AI Infinity"
+    submit_url: https://aiinfinity-meetpatel.notion.site/AI-Infinity-AI-Tools-Directory-0da673c487124ea2b6f8ebe59b75a231
+    type: form
+    auto: yes
+    lang: en
+  - name: "AI Marketing"
+    submit_url: https://aimarketing.directory
+    type: form
+    auto: yes
+    lang: en
+  - name: "Ai-search"
+    submit_url: https://ai-search.io/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Aistartups"
+    submit_url: https://www.aistartups.net/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Aistash"
+    submit_url: https://www.aistash.co/submit-tool
+    type: form
+    auto: yes
+    lang: en
+  - name: "Aitoolboard"
+    submit_url: https://aitoolboard.com/submit-ai-tool
+    type: form
+    auto: yes
+    lang: en
+  - name: "Aitooltracker"
+    submit_url: https://aitooltracker.com/dashboard/#submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "AI Tools Arena"
+    submit_url: https://aitoolsarena.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "AI Tools Directory"
+    submit_url: https://www.aitools.directory
+    type: form
+    auto: yes
+    lang: en
+  - name: "AI Tools Directory HCILAB"
+    submit_url: https://www.hcilab.org/ai-tools-directory
+    type: form
+    auto: yes
+    lang: en
+  - name: "AI Tools Guide"
+    submit_url: https://aitoolsguide.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "AI Tools Wiki"
+    submit_url: https://aitoolswiki.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "Aitrendz"
+    submit_url: https://aitrendz.xyz/submit-ai-link
+    type: form
+    auto: yes
+    lang: en
+  - name: "Aiwizard"
+    submit_url: https://www.aiwizard.ai/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Aixcollection"
+    submit_url: https://aixcollection.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Alltopstartups"
+    submit_url: https://alltopstartups.com/submit-startup
+    type: form
+    auto: yes
+    lang: en
+  - name: "Allstartups"
+    submit_url: https://www.allstartups.info/Startups/Submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Alternatives.co"
+    submit_url: https://alternatives.co/software/ai-tools
+    type: form
+    auto: yes
+    lang: en
+  - name: "Ankore"
+    submit_url: https://ankore.io/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "News"
+    submit_url: https://news.bensbites.co
+    type: form
+    auto: yes
+    lang: en
+  - name: "News"
+    submit_url: https://news.bensbites.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Bestaito"
+    submit_url: https://bestaito.com/submit-a-ai-tool
+    type: form
+    auto: yes
+    lang: en
+  - name: "Bizraw"
+    submit_url: https://bizraw.com/whats-new/posts/98
+    type: form
+    auto: yes
+    lang: en
+  - name: "Bufferapps"
+    submit_url: https://www.bufferapps.com/beta-listing/new
+    type: form
+    auto: yes
+    lang: en
+  - name: "Explore"
+    submit_url: https://explore.chatgate.ai/submit-your-tool
+    type: form
+    auto: yes
+    lang: en
+  - name: "Crunchbase"
+    submit_url: https://www.crunchbase.com/add-new
+    type: form
+    auto: yes
+    lang: en
+  - name: "Dailytech"
+    submit_url: https://www.dailytech.ai/submit-service
+    type: form
+    auto: yes
+    lang: en
+  - name: "Devpages"
+    submit_url: https://www.devpages.io/submit-a-tool
+    type: form
+    auto: yes
+    lang: en
+  - name: "Devpost"
+    submit_url: https://devpost.com/software/new
+    type: form
+    auto: yes
+    lang: en
+  - name: "Digitalagencynetwork"
+    submit_url: https://digitalagencynetwork.com/join-free-listing-tools
+    type: form
+    auto: yes
+    lang: en
+  - name: "Dokeyai"
+    submit_url: https://dokeyai.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Easysaveai"
+    submit_url: https://easysaveai.com/submit-your-ai-tool
+    type: form
+    auto: yes
+    lang: en
+  - name: "Easywithai"
+    submit_url: https://easywithai.com/submit-tool
+    type: form
+    auto: yes
+    lang: en
+  - name: "Ebool"
+    submit_url: https://www.ebool.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Educator Tools"
+    submit_url: https://aieducator.tools
+    type: form
+    auto: yes
+    lang: en
+  - name: "Faind"
+    submit_url: https://faind.ai/submit-a-tool
+    type: form
+    auto: yes
+    lang: en
+  - name: "Financesonline"
+    submit_url: https://financesonline.com/add-product
+    type: form
+    auto: yes
+    lang: en
+  - name: "Find Cool Tools"
+    submit_url: https://findcool.tools
+    type: form
+    auto: yes
+    lang: en
+  - name: "Findmyaitool"
+    submit_url: https://findmyaitool.com/submit-tool
+    type: form
+    auto: yes
+    lang: en
+  - name: "First100users"
+    submit_url: https://www.first100users.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Freeappsai"
+    submit_url: https://freeappsai.com/add
+    type: form
+    auto: yes
+    lang: en
+  - name: "Good AI Tools"
+    submit_url: https://goodaitools.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "Gptacademy"
+    submit_url: https://www.gptacademy.co/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Gpt-stack"
+    submit_url: https://www.gpt-stack.com/add-resourc
+    type: form
+    auto: yes
+    lang: en
+  - name: "Gpte"
+    submit_url: https://gpte.ai/submit-a-tool
+    type: form
+    auto: yes
+    lang: en
+  - name: "Gptshunter"
+    submit_url: https://www.gptshunter.com/submit-gpt
+    type: form
+    auto: yes
+    lang: en
+  - name: "Ilib"
+    submit_url: https://www.ilib.com/dashboard/submissions/new
+    type: form
+    auto: yes
+    lang: en
+  - name: "Instantai"
+    submit_url: https://instantai.io/submit-listing
+    type: form
+    auto: yes
+    lang: en
+  - name: "Inventlist"
+    submit_url: https://inventlist.com/sites/new
+    type: form
+    auto: yes
+    lang: en
+  - name: "Ismailblogger"
+    submit_url: https://ismailblogger.com/tools-ai
+    type: form
+    auto: yes
+    lang: en
+  - name: "Kitploit"
+    submit_url: https://www.kitploit.com/p/submit-tool.html
+    type: form
+    auto: yes
+    lang: en
+  - name: "Launched"
+    submit_url: https://launched.site
+    type: form
+    auto: yes
+    lang: en
+  - name: "Look AI Tools"
+    submit_url: https://lookaitools.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "Madgenius"
+    submit_url: https://madgenius.co/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Nextgentool"
+    submit_url: https://nextgentool.io/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Nextpedia"
+    submit_url: https://www.nextpedia.io/submit-tool
+    type: form
+    auto: yes
+    lang: en
+  - name: "Orbic"
+    submit_url: https://orbic.ai/submit/tools
+    type: form
+    auto: yes
+    lang: en
+  - name: "Paggu"
+    submit_url: https://www.paggu.com/submit-your-startup
+    type: form
+    auto: yes
+    lang: en
+  - name: "Postmake"
+    submit_url: https://postmake.io/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Robingood"
+    submit_url: https://tools.robingood.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "Saaspo"
+    submit_url: https://www.saaspo.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Saassurf"
+    submit_url: https://saassurf.com/submit-a-product#submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Sick Tools"
+    submit_url: https://www.sick.tools
+    type: form
+    auto: yes
+    lang: en
+  - name: "Smart Tools"
+    submit_url: https://www.smart-tools.ai
+    type: form
+    auto: yes
+    lang: en
+  - name: "Startupbuffer"
+    submit_url: https://startupbuffer.com/site/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Startupstage"
+    submit_url: https://startupstage.app/startups/new
+    type: form
+    auto: yes
+    lang: en
+  - name: "Synoptica"
+    submit_url: https://synoptica.com/submit-an-ai-tool
+    type: form
+    auto: yes
+    lang: en
+  - name: "Thataicollection"
+    submit_url: https://www.thataicollection.com/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Theaigeneration"
+    submit_url: https://www.theaigeneration.com/add
+    type: form
+    auto: yes
+    lang: en
+  - name: "TipSeason"
+    submit_url: https://tipseason.com/ai-tools
+    type: form
+    auto: yes
+    lang: en
+  - name: "Toolai"
+    submit_url: https://toolai.io/en/submit
+    type: form
+    auto: yes
+    lang: en
+  - name: "Tool Directory"
+    submit_url: https://tooldirectory.ai
+    type: form
+    auto: yes
+    lang: en
+  - name: "Https"
+    submit_url: https://https://tooldirectory.ai/submit-tool
+    type: form
+    auto: yes
+    lang: en
+  - name: "Toolio"
+    submit_url: https://toolio.ai/submit-a-tool
+    type: form
+    auto: yes
+    lang: en
+  - name: "Tools Nocode"
+    submit_url: https://www.toolsnocode.com/ai
+    type: form
+    auto: yes
+    lang: en
+  - name: "Tools.so"
+    submit_url: https://tools.so
+    type: form
+    auto: yes
+    lang: en
+  - name: "Toolspedia"
+    submit_url: https://www.toolspedia.io
+    type: form
+    auto: yes
+    lang: en
+  - name: "Under1000MRR.tools"
+    submit_url: https://under1000mrr.tools
+    type: form
+    auto: yes
+    lang: en
+  - name: "Victrays"
+    submit_url: https://victrays.com/submit-tool
+    type: form
+    auto: yes
+    lang: en
+  - name: "Whatsthebigdata"
+    submit_url: https://whatsthebigdata.com/submit-new-ai-tool
+    type: form
+    auto: yes
+    lang: en
+  - name: "Woy"
+    submit_url: https://woy.ai/submit
+    type: form
+    auto: yes
+    lang: en
