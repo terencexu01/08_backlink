@@ -20,5 +20,27 @@
     "status": "pending",
     "submitted": false,
     "verified_at": "2026-08-13"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://wpstackable.com/blog/ai-tools-that-every-web-designer-needs-to-know-about/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "ai-design-tools",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-14"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://adamcogan.com/2025/11/17/my-top-3-ai-image-generators/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "ai-image-generators",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-14"
   }
 ]
