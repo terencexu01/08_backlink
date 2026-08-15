@@ -67,7 +67,7 @@ const yamlBlock = `
 # Community-curated directories (from ${SOURCE_REPO}, ${fresh.length} new, added ${today})
 # Run scripts/probe-blogs.mjs-style liveness check before bulk submit
 # ============================================================
-community_curated_from_${SOURCE_REPO.split('/').pop().replace(/[^a-z0-9]/gi, '_')}:
+community_curated_from_${SOURCE_REPO.replace(/[^a-z0-9]/gi, '_')}:
 
 ` + fresh.map(d => {
   const cleanUrl = d.url.split('?')[0].replace(/\/$/, '');

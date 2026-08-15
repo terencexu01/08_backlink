@@ -2511,7 +2511,7 @@ community_curated_from_Free_AI_Directories:
 # Community-curated directories (from best-of-ai/ai-directories, 42 new, added 2026-08-15)
 # Run scripts/probe-blogs.mjs-style liveness check before bulk submit
 # ============================================================
-community_curated_from_ai_directories:
+community_curated_from_best_of_ai_ai_directories:
 
   - name: "AI Directory"
     submit_url: https://aidirectory.wiki
