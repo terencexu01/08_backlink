@@ -535,6 +535,8 @@ async function batchSubmit(opts = {}) {
       console.log(`[${i + 1}/${toProcess.length}]`);
 
       const result = await processResource(resource, site, page, log, projectEmail, projectUrl);
+      result.site = opts.project || site.name;  // record actual project, not sites.json site
+      result.project = opts.project || site.name;
       log.submissions.push(result);
       saveLog(log);
 
