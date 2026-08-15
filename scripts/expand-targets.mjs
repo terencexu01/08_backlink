@@ -14,10 +14,13 @@ const TARGETS_FILE = 'targets.yaml';
 // 1. Fetch raw README (try main then master)
 let md = '';
 for (const branch of ['main', 'master']) {
-  try {
-    const r = await fetch(`https://raw.githubusercontent.com/${SOURCE_REPO}/${branch}/README.md`);
-    if (r.ok) { md = await r.text(); break; }
-  } catch {}
+  for (const file of ['README.md', 'readme.md']) {
+    try {
+      const r = await fetch(`https://raw.githubusercontent.com/${SOURCE_REPO}/${branch}/${file}`);
+      if (r.ok) { md = await r.text(); break; }
+    } catch {}
+  }
+  if (md) break;
 }
 if (!md) { console.error('❌ could not fetch README'); process.exit(1); }
 
