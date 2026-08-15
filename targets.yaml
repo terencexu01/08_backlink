@@ -2490,24 +2490,18 @@ community_curated_from_ai_directories:
     type: form
     auto: yes
     lang: en
-
-# ============================================================
-# Community-curated directories (from submitaitools/Free-AI-Directories, 3 new, added 2026-08-14)
-# Run scripts/probe-blogs.mjs-style liveness check before bulk submit
-# ============================================================
 community_curated_from_Free_AI_Directories:
-
-  - name: "Submitaitools"
+  - name: Submitaitools
     submit_url: https://submitaitools.org
     type: form
     auto: yes
     lang: en
-  - name: "GoPickHost"
+  - name: GoPickHost
     submit_url: https://gopickhost.com/tools
     type: form
     auto: yes
     lang: en
-  - name: "Doforai"
+  - name: Doforai
     submit_url: https://doforai.tools
     type: form
     auto: yes
