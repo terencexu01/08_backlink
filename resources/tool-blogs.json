@@ -86,5 +86,82 @@
     "status": "pending",
     "submitted": false,
     "verified_at": "2026-08-15"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://www.michaelagreiler.com/code-review-is-under-strain/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "dev-productivity-ai",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-15"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://www.michaelagreiler.com/scope/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "dev-productivity-ai",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-15"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://www.michaelagreiler.com/code-reviews-from-team-to-individual/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "dev-productivity-ai",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-15"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://www.michaelagreiler.com/codereview-surrender-exploitation/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "dev-productivity-ai",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-15"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://www.michaelagreiler.com/research-discussions-about-ai/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "dev-productivity-ai",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-15"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://www.michaelagreiler.com/if-we-cant-slow-ai-we-must-accelerate-responsibility/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "dev-productivity-ai",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-15"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://www.michaelagreiler.com/design-developer-experience-survey/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "dev-productivity-ai",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-15"
   }
 ]
