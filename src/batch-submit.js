@@ -163,7 +163,11 @@ function saveGlobalHistory(history) {
 }
 
 function isSubmitted(log, globalHistory, url) {
-  return globalHistory.has(url) || log.submissions.some(s => s.url === url);
+  // Strip trailing slash and query params for comparison (URLs may differ slightly)
+  const norm = u => (u || '').split('?')[0].replace(/\/$/, '');
+  const nu = norm(url);
+  return globalHistory.has(url) || globalHistory.has(nu) ||
+    log.submissions.some(s => norm(s.url) === nu || s.url === url);
 }
 
 // --- Blog comment submission (v2: natural comments, URL in website field) ---
@@ -480,6 +484,12 @@ async function batchSubmit(opts = {}) {
   const prioritized = prioritizeResources(resources);
   const pending = prioritized.filter(r => {
     const url = r.url || r.URL;
+    if (opts.project) {
+      // With --project, gate on per-project submission (3-per-blog rule in the
+      // actionable filter below handles the blog-level cap). Don't use global-history
+      // here — it would block all projects after the first one uses the blog.
+      return !log.submissions.some(s => (s.url === url || s.site === url) && s.project === opts.project);
+    }
     return !isSubmitted(log, globalHistory, url);
   });
 
