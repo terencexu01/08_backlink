@@ -42,5 +42,49 @@
     "status": "pending",
     "submitted": false,
     "verified_at": "2026-08-14"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://adamcogan.com/2026/02/10/migrating-ssw-rules/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "tech-blog",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-15"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://adamcogan.com/2026/01/19/adams-2025-year-in-review/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "tech-blog",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-15"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://adamcogan.com/2026/04/01/military-road-pedestrian-overpass-project/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "tech-blog",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-15"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://adamcogan.com/2026/07/29/ssws-homepage-receives-a-2026-facelift/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "tech-blog",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-15"
   }
 ]
