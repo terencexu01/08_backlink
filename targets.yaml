@@ -2506,3 +2506,220 @@ community_curated_from_Free_AI_Directories:
     type: form
     auto: yes
     lang: en
+
+# ============================================================
+# Community-curated directories (from best-of-ai/ai-directories, 42 new, added 2026-08-15)
+# Run scripts/probe-blogs.mjs-style liveness check before bulk submit
+# ============================================================
+community_curated_from_ai_directories:
+
+  - name: "AI Directory"
+    submit_url: https://aidirectory.wiki
+    type: form
+    auto: yes
+    lang: en
+  - name: "AI Search Visibility & Optimization Tools"
+    submit_url: https://www.aeotools.space
+    type: form
+    auto: yes
+    lang: en
+  - name: "AI Tools Corner"
+    submit_url: https://aitoolscorner.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "AI Tools Pin"
+    submit_url: https://aitoolspin.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "AI-Tools Directory"
+    submit_url: https://ai-tools.directory
+    type: form
+    auto: yes
+    lang: en
+  - name: "AI Tools Love"
+    submit_url: https://aitools.love
+    type: form
+    auto: yes
+    lang: en
+  - name: "AI Tools Marketer"
+    submit_url: https://aitoolsmarketer.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "AI Tools Magazine"
+    submit_url: https://aitoolsmagazine.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "ALL AI TOOLS .TECH DIRECTORY"
+    submit_url: https://allaitools.tech
+    type: form
+    auto: yes
+    lang: en
+  - name: "All The AI Tools"
+    submit_url: https://alltheaitools.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "AI Tools For Me"
+    submit_url: https://aitoolsforme.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "AI Agents Directory"
+    submit_url: https://aiagentsdirectory.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "Addaidirectory"
+    submit_url: https://addaidirectory.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "AIToolsHunt"
+    submit_url: https://aitoolshunt.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "Based Tools"
+    submit_url: https://www.basedtools.ai
+    type: form
+    auto: yes
+    lang: en
+  - name: "Best AI Tools org"
+    submit_url: https://www.best-ai-tools.org
+    type: form
+    auto: yes
+    lang: en
+  - name: "Beyond AI Tools"
+    submit_url: https://www.beyondaitools.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "ClaudePro.directory"
+    submit_url: https://claudepro.directory
+    type: form
+    auto: yes
+    lang: en
+  - name: "Dofollow.Tools"
+    submit_url: https://dofollow.tools
+    type: form
+    auto: yes
+    lang: en
+  - name: "Deeplaunch"
+    submit_url: https://deeplaunch.io
+    type: form
+    auto: yes
+    lang: en
+  - name: "EliteAI Tools"
+    submit_url: https://eliteai.tools
+    type: form
+    auto: yes
+    lang: en
+  - name: "Evolmagazine.com"
+    submit_url: https://www.evolmagazine.com/en/tools
+    type: form
+    auto: yes
+    lang: en
+  - name: "Find An AI Tools"
+    submit_url: https://findanaitools.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "Future AI Guide"
+    submit_url: https://tools.futureaiguide.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "Flowtools"
+    submit_url: https://www.flowtools.co
+    type: form
+    auto: yes
+    lang: en
+  - name: "Fastlaunch"
+    submit_url: https://fastlaunch.io
+    type: form
+    auto: yes
+    lang: en
+  - name: "Grabon AI Directory"
+    submit_url: https://www.grabon.in/indulge/ai-tools
+    type: form
+    auto: yes
+    lang: en
+  - name: "God of Prompt"
+    submit_url: https://godofprompt.ai/best-ai-tools
+    type: form
+    auto: yes
+    lang: en
+  - name: "Intelligent Tools"
+    submit_url: https://intelligenttools.co
+    type: form
+    auto: yes
+    lang: en
+  - name: "LineZine AI Tool Directory"
+    submit_url: https://linezine.com/ai-tool-directory
+    type: form
+    auto: yes
+    lang: en
+  - name: "Launchvault"
+    submit_url: https://www.launchvault.dev
+    type: form
+    auto: yes
+    lang: en
+  - name: "Marketing Tools List"
+    submit_url: https://marketingtoolslist.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "Most Popular AI Tools"
+    submit_url: https://mostpopularaitools.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "NavTools AI"
+    submit_url: https://navtools.ai
+    type: form
+    auto: yes
+    lang: en
+  - name: "OpenSaasDirectory"
+    submit_url: https://opensaas.directory
+    type: form
+    auto: yes
+    lang: en
+  - name: "OpenTools"
+    submit_url: https://opentools.ai
+    type: form
+    auto: yes
+    lang: en
+  - name: "Startup Tools List"
+    submit_url: https://startuptoolslist.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "Sales Tools AI"
+    submit_url: https://salestoolsai.top
+    type: form
+    auto: yes
+    lang: en
+  - name: "SearchAiDirectory"
+    submit_url: https://searchaidirectory.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "TopAI.tools"
+    submit_url: https://topai.tools
+    type: form
+    auto: yes
+    lang: en
+  - name: "Top Tools"
+    submit_url: https://www.toptools.ai
+    type: form
+    auto: yes
+    lang: en
+  - name: "Tools Hub AI"
+    submit_url: https://toolshubai.com
+    type: form
+    auto: yes
+    lang: en
