@@ -170,7 +170,7 @@ function isSubmitted(log, globalHistory, url) {
 // emailOverride (optional) — when passed (e.g. a project's dedicated email per
 // SPEC §4.6), replaces the hardcoded PERSONAS email. Name still comes from
 // persona rotation. Undefined → existing PERSONAS behavior preserved.
-async function submitBlogComment(page, resource, site, emailOverride) {
+async function submitBlogComment(page, resource, site, emailOverride, urlOverride) {
   const norm = normalizeResource(resource);
   await page.goto(norm.url, { waitUntil: 'domcontentloaded', timeout: TIMEOUT_MS });
   await delay(2000); // let lazy-loaded comment forms appear
@@ -249,7 +249,7 @@ async function submitBlogComment(page, resource, site, emailOverride) {
       try {
         const el = await page.$(sel);
         if (el && await el.isVisible()) {
-          await humanType(page, sel, site.url);
+          await humanType(page, sel, urlOverride || site.url);
           break;
         }
       } catch (e) { continue; }
@@ -350,7 +350,7 @@ async function checkBlockers(page) {
 }
 
 // --- Process a single resource ---
-async function processResource(resource, site, page, log, emailOverride) {
+async function processResource(resource, site, page, log, emailOverride, urlOverride) {
   const norm = normalizeResource(resource);
   const result = {
     url: norm.url,
@@ -381,7 +381,7 @@ async function processResource(resource, site, page, log, emailOverride) {
 
     // Navigate and check blockers
     if (norm.type === 'blog_comment') {
-      await submitBlogComment(page, resource, site, emailOverride);
+      await submitBlogComment(page, resource, site, emailOverride, urlOverride);
     } else {
       result.status = 'skipped';
       result.reason = 'unsupported_type';
@@ -463,10 +463,13 @@ async function batchSubmit(opts = {}) {
   // email instead of the hardcoded PERSONAS address. Computed once before the
   // loop so a missing project fails fast before opening a browser.
   let projectEmail;
+  let projectUrl;
   if (opts.project) {
     const config = await loadConfig();
     projectEmail = pickProjectEmail(opts.project, config);
+    projectUrl = getProject(config, opts.project)?.url;
     console.log(`📧 Using project email: ${projectEmail}`);
+    console.log(`🔗 Using project URL: ${projectUrl}`);
   }
 
   // Rotate through sites
@@ -513,7 +516,7 @@ async function batchSubmit(opts = {}) {
       const resource = toProcess[i];
       console.log(`[${i + 1}/${toProcess.length}]`);
 
-      const result = await processResource(resource, site, page, log, projectEmail);
+      const result = await processResource(resource, site, page, log, projectEmail, projectUrl);
       log.submissions.push(result);
       saveLog(log);
 
