@@ -8,7 +8,7 @@ import { fileURLToPath } from 'url';
 import { createSession, delay, humanType } from './browser.js';
 import { loadConfig, getProject } from './config.js';
 import { parseReviewFile, filterApproved } from './reviews.js';
-import { recordSubmission, loadTracker } from './tracker.js';
+import { recordSubmission, loadTracker, getBlogCommentStats } from './tracker.js';
 
 const TIMEOUT_MS = 30000;
 const MIN_DELAY = 15000;  // 15-45s between submissions
@@ -483,10 +483,18 @@ async function batchSubmit(opts = {}) {
     return !isSubmitted(log, globalHistory, url);
   });
 
-  // Only blog_comments with URL field and no captcha
+  // Only blog_comments with URL field and no captcha.
+  // When --project is given, also check submissions.yaml to enforce the
+  // "max 3 projects per blog" rule from the design (spec §4.3) — skip blogs
+  // that already have 3+ projects commenting on it.
   const actionable = pending.filter(r => {
     const norm = normalizeResource(r);
-    return norm.type === 'blog_comment' && norm.has_url_field && !norm.has_captcha;
+    if (norm.type !== 'blog_comment' || !norm.has_url_field || norm.has_captcha) return false;
+    if (opts.project) {
+      const stats = getBlogCommentStats(norm.url);
+      return stats.count < 3 || stats.projects.includes(opts.project);
+    }
+    return true;
   });
 
   if (actionable.length === 0) {
