@@ -17,13 +17,24 @@ export function getDirectoryCandidates(project, sites, tracker, opts = {}) {
   const intervalMs = (opts.intervalDays ?? DIRECTORY_INTERVAL_DAYS) * DAY_MS;
   const now = Date.now();
 
+  // Sites may be strings (names) or objects with {name, submit_url}. Tracker
+  // records submit_url, so resolve each site to its URL for matching, falling
+  // back to the name if no URL is available.
+  const toKeys = s => {
+    if (typeof s === 'string') return [s];
+    return [s.submit_url, s.name].filter(Boolean);
+  };
+
   return sites
-    .map(siteKey)
-    .filter(site => !isProjectSubmitted(project, site, tracker))
-    .filter(site => {
-      const last = getSiteLastSubmitDate(site, tracker);
-      return !last || now - last.getTime() >= intervalMs;
+    .map(s => ({ site: s, keys: toKeys(s) }))
+    .filter(({ keys }) => !keys.some(k => isProjectSubmitted(project, k, tracker)))
+    .filter(({ keys }) => {
+      const lastDates = keys.map(k => getSiteLastSubmitDate(k, tracker)).filter(Boolean);
+      if (lastDates.length === 0) return true;
+      const last = new Date(Math.max(...lastDates.map(d => d.getTime())));
+      return now - last.getTime() >= intervalMs;
     })
+    .map(({ site }) => siteKey(site))
     .slice(0, limit);
 }
 
