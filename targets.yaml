@@ -3299,3 +3299,24 @@ community_from_appscribed:
     type: form
     auto: yes
     lang: en
+community_from_aisurf:
+  - name: SubmitAIToolCom
+    submit_url: https://submitaitool.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: CogList
+    submit_url: https://coglist.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: StartupListIN
+    submit_url: https://startuplist.in/
+    type: form
+    auto: yes
+    lang: en
+  - name: TrustListAI
+    submit_url: https://www.trustlist.ai/
+    type: form
+    auto: yes
+    lang: en
