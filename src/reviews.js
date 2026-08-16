@@ -14,7 +14,7 @@ const INDEX_MARKS = ['①', '②', '③', '④', '⑤', '⑥', '⑦', '⑧', '�
 // "[☑ 通过 / ☒ 打回]" that contains every status word, which would otherwise
 // dominate a naive whole-block search and always resolve to "approved".
 function parseStatus(block) {
-  const m = block.match(/状态：\s*(\S+)/);
+  const m = block.match(/\*?\*?状态\*?\*?：\s*(\S+)/);
   const first = m ? m[1] : '';
   if (/☑/.test(first) || first.includes('通过')) return 'approved';
   if (/☒/.test(first) || first.includes('打回') || first.includes('驳回')) return 'rejected';
@@ -30,7 +30,7 @@ export function parseReviewFile(content) {
       const project = head[1].trim();
       const blogUrl = head[2].trim();
 
-      const commentMatch = block.match(/评论草稿：\s*\n((?:>.*\n?)+)/);
+      const commentMatch = block.match(/\*?\*?评论草稿\*?\*?：\s*\n((?:>.*\n?)+)/);
       let comment = '';
       if (commentMatch) {
         comment = commentMatch[1]
