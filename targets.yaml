@@ -3103,3 +3103,144 @@ community_curated_from_ozgrozer_top_ai_directories:
     type: form
     auto: yes
     lang: en
+
+# ============================================================
+# Community-curated directories (from mahseema/awesome-ai-tools, 17 new, added 2026-08-16)
+# Run scripts/probe-blogs.mjs-style liveness check before bulk submit
+# ============================================================
+community_curated_from_mahseema_awesome_ai_tools:
+
+  - name: "Newsletter"
+    submit_url: http://newsletter.altern.ai
+    type: form
+    auto: yes
+    lang: en
+  - name: "Gist AI"
+    submit_url: https://www.gistai.tech
+    type: form
+    auto: yes
+    lang: en
+  - name: "Elephas"
+    submit_url: https://elephas.app
+    type: form
+    auto: yes
+    lang: en
+  - name: "Lemmy"
+    submit_url: https://lemmy.co
+    type: form
+    auto: yes
+    lang: en
+  - name: "Google Sheets Formula Generator"
+    submit_url: https://bettersheets.co/google-sheets-formula-generator
+    type: form
+    auto: yes
+    lang: en
+  - name: "CreateEasily"
+    submit_url: https://createeasily.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "Emilio"
+    submit_url: https://getemil.io
+    type: form
+    auto: yes
+    lang: en
+  - name: "Huntr AI Resume Builder"
+    submit_url: https://huntr.co/product/ai-resume-builder
+    type: form
+    auto: yes
+    lang: en
+  - name: "SiteGPT"
+    submit_url: https://sitegpt.ai
+    type: form
+    auto: yes
+    lang: en
+  - name: "GPTHelp.ai"
+    submit_url: https://gpthelp.ai
+    type: form
+    auto: yes
+    lang: en
+  - name: "Never Jobless LinkedIn Message Generator"
+    submit_url: https://neverjobless.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "StockPhotoAI.net"
+    submit_url: https://www.stockphotoai.net
+    type: form
+    auto: yes
+    lang: en
+  - name: "Aispect"
+    submit_url: https://aispect.io
+    type: form
+    auto: yes
+    lang: en
+  - name: "PressPulse AI"
+    submit_url: https://www.presspulse.ai
+    type: form
+    auto: yes
+    lang: en
+  - name: "GummySearch"
+    submit_url: https://gummysearch.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "Taplio"
+    submit_url: https://taplio.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "Myriad"
+    submit_url: https://www.namepepper.com/free-tools/ai-content-prompt-tool
+    type: form
+    auto: yes
+    lang: en
+
+# ============================================================
+# Community-curated directories (from ShaikhWarsi/free-ai-tools, 3 new, added 2026-08-16)
+# Run scripts/probe-blogs.mjs-style liveness check before bulk submit
+# ============================================================
+community_curated_from_ShaikhWarsi_free_ai_tools:
+
+  - name: "Stars"
+    submit_url: https://img.shields.io/github/stars/ShaikhWarsi/free-ai-tools
+    type: form
+    auto: yes
+    lang: en
+  - name: "Documentation"
+    submit_url: https://docs.trae.ai/ide/new-plans-and-billing
+    type: form
+    auto: yes
+    lang: en
+  - name: "Usage-Based Billing Announcement (Apr 27, 2026)"
+    submit_url: https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing
+    type: form
+    auto: yes
+    lang: en
+
+# ============================================================
+# Community-curated directories (from best-of-ai/best-of-ai, 4 new, added 2026-08-16)
+# Run scripts/probe-blogs.mjs-style liveness check before bulk submit
+# ============================================================
+community_curated_from_best_of_ai_best_of_ai:
+
+  - name: "Creately"
+    submit_url: https://creately.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "Bing Image Creator"
+    submit_url: https://bing.com/create
+    type: form
+    auto: yes
+    lang: en
+  - name: "Newrelic"
+    submit_url: https://newrelic.com
+    type: form
+    auto: yes
+    lang: en
+  - name: "Applitools"
+    submit_url: https://applitools.com
+    type: form
+    auto: yes
+    lang: en
