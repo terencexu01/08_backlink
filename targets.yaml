@@ -3320,3 +3320,419 @@ community_from_aisurf:
     type: form
     auto: yes
     lang: en
+community_from_appscribed_full:
+  - name: Ai Appreview
+    submit_url: https://ai-appreview.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Ai Nav
+    submit_url: https://ai-nav.net/
+    type: form
+    auto: yes
+    lang: en
+  - name: Ai Sites
+    submit_url: https://ai-sites.net/
+    type: form
+    auto: yes
+    lang: en
+  - name: Ai Toolflow
+    submit_url: https://ai-toolflow.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Aicorner
+    submit_url: https://aicorner.net/
+    type: form
+    auto: yes
+    lang: en
+  - name: Aidreamhub
+    submit_url: https://aidreamhub.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Aidust
+    submit_url: https://aidust.io/
+    type: form
+    auto: yes
+    lang: en
+  - name: Aiheadshothub
+    submit_url: https://aiheadshothub.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Aihubs
+    submit_url: https://aihubs.ai/
+    type: form
+    auto: yes
+    lang: en
+  - name: Aikaptan
+    submit_url: https://aikaptan.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Airesource
+    submit_url: https://airesource.pro/
+    type: form
+    auto: yes
+    lang: en
+  - name: Airespo
+    submit_url: https://airespo.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Aitoolsa2z
+    submit_url: https://aitoolsa2z.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Aitoolsexplorer
+    submit_url: https://aitoolsexplorer.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Aitoolsprime
+    submit_url: https://aitoolsprime.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Aitoolz
+    submit_url: https://aitoolz.net/
+    type: form
+    auto: yes
+    lang: en
+  - name: Allaiwebsite
+    submit_url: https://allaiwebsite.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Allesora
+    submit_url: https://allesora.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Apps400
+    submit_url: https://apps400.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Appsmamma
+    submit_url: https://appsmamma.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Appsmirror
+    submit_url: https://appsmirror.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Bestofweb
+    submit_url: https://www.bestofweb.site/
+    type: form
+    auto: yes
+    lang: en
+  - name: Byblosai
+    submit_url: https://byblosai.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Chatgate
+    submit_url: https://chatgate.ai/
+    type: form
+    auto: yes
+    lang: en
+  - name: Cloudbooklet
+    submit_url: https://www.cloudbooklet.net/
+    type: form
+    auto: yes
+    lang: en
+  - name: Dailytech
+    submit_url: https://dailytech.ai/
+    type: form
+    auto: yes
+    lang: en
+  - name: Datalook
+    submit_url: https://datalook.io/
+    type: form
+    auto: yes
+    lang: en
+  - name: Desifounder
+    submit_url: https://desifounder.com/spotlight
+    type: form
+    auto: yes
+    lang: en
+  - name: Dessign
+    submit_url: https://dessign.net/
+    type: form
+    auto: yes
+    lang: en
+  - name: Direct2app
+    submit_url: https://www.direct2app.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Everydev
+    submit_url: https://www.everydev.ai/
+    type: form
+    auto: yes
+    lang: en
+  - name: Flaex
+    submit_url: https://flaex.ai/
+    type: form
+    auto: yes
+    lang: en
+  - name: Futureagitools
+    submit_url: https://futureagitools.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Futurepedia
+    submit_url: https://futurepedia.wiki/
+    type: form
+    auto: yes
+    lang: en
+  - name: Groupify
+    submit_url: https://groupify.ai/
+    type: form
+    auto: yes
+    lang: en
+  - name: Havnai
+    submit_url: https://havnai.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: How2aitools
+    submit_url: https://how2aitools.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Hypertools
+    submit_url: https://hypertools.so/
+    type: form
+    auto: yes
+    lang: en
+  - name: Kickproduct
+    submit_url: https://kickproduct.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Leadingai
+    submit_url: https://leadingai.tools/
+    type: form
+    auto: yes
+    lang: en
+  - name: Myaitoolhub
+    submit_url: https://myaitoolhub.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Navfolders
+    submit_url: https://navfolders.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Peakaigrowth
+    submit_url: https://peakaigrowth.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Selljam
+    submit_url: https://selljam.ai/
+    type: form
+    auto: yes
+    lang: en
+  - name: Smacient
+    submit_url: https://smacient.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Superaitools
+    submit_url: https://superaitools.io/
+    type: form
+    auto: yes
+    lang: en
+  - name: Tapscape
+    submit_url: https://tapscape.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Thankjohn
+    submit_url: https://www.thankjohn.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Thatsmy
+    submit_url: https://thatsmy.ai/
+    type: form
+    auto: yes
+    lang: en
+  - name: Theailibrary
+    submit_url: https://www.theailibrary.co/
+    type: form
+    auto: yes
+    lang: en
+  - name: Theainavigator
+    submit_url: https://theainavigator.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Thenextaitool
+    submit_url: https://thenextaitool.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Thetoolify
+    submit_url: https://thetoolify.dev/
+    type: form
+    auto: yes
+    lang: en
+  - name: Tooldirs
+    submit_url: https://tooldirs.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Tooliq
+    submit_url: https://tooliq.ai/
+    type: form
+    auto: yes
+    lang: en
+  - name: Toolkitly
+    submit_url: https://www.toolkitly.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Toolpasta
+    submit_url: https://toolpasta.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Toolplateai
+    submit_url: https://toolplateai.io/
+    type: form
+    auto: yes
+    lang: en
+  - name: Toolsland
+    submit_url: https://toolsland.ai/
+    type: form
+    auto: yes
+    lang: en
+  - name: Toolsml
+    submit_url: https://toolsml.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Toolverse
+    submit_url: https://toolverse.vip/
+    type: form
+    auto: yes
+    lang: en
+  - name: Top10collect
+    submit_url: https://top10collect.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Topaidirectories
+    submit_url: https://topaidirectories.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Trueneural
+    submit_url: https://trueneural.io/
+    type: form
+    auto: yes
+    lang: en
+  - name: Usemyai
+    submit_url: https://usemyai.pro/
+    type: form
+    auto: yes
+    lang: en
+  - name: Yaatd
+    submit_url: https://yaatd.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Aiyouneed
+    submit_url: https://aiyouneed.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Agenthunter
+    submit_url: https://www.agenthunter.io/
+    type: form
+    auto: yes
+    lang: en
+  - name: Aiagentslive
+    submit_url: https://aiagentslive.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Aiagentsverse
+    submit_url: https://aiagentsverse.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Findyouragent
+    submit_url: https://findyouragent.ai/
+    type: form
+    auto: yes
+    lang: en
+  - name: Theagentrank
+    submit_url: https://theagentrank.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Trillionagent
+    submit_url: https://trillionagent.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Webtoolsweekly
+    submit_url: https://webtoolsweekly.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: 300aidirectories
+    submit_url: https://300aidirectories.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Aidirectori
+    submit_url: https://aidirectori.es/
+    type: form
+    auto: yes
+    lang: en
+  - name: Directories
+    submit_url: https://directories.bestaitools.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Growstartup
+    submit_url: https://growstartup.co/
+    type: form
+    auto: yes
+    lang: en
+  - name: Webdirectorycenter
+    submit_url: https://webdirectorycenter.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Instagram
+    submit_url: https://www.instagram.com/unseen_ainews/
+    type: form
+    auto: yes
+    lang: en
+  - name: Hipreneurs
+    submit_url: https://www.hipreneurs.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: Try
+    submit_url: https://try.web.clickup.com/5xpbwgasm0se
+    type: form
+    auto: yes
+    lang: en
+  - name: Youtube
+    submit_url: https://www.youtube.com/@Appscribed
+    type: form
+    auto: yes
+    lang: en
