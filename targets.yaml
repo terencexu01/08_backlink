@@ -3103,144 +3103,199 @@ community_curated_from_ozgrozer_top_ai_directories:
     type: form
     auto: yes
     lang: en
-
-# ============================================================
-# Community-curated directories (from mahseema/awesome-ai-tools, 17 new, added 2026-08-16)
-# Run scripts/probe-blogs.mjs-style liveness check before bulk submit
-# ============================================================
 community_curated_from_mahseema_awesome_ai_tools:
-
-  - name: "Newsletter"
+  - name: Newsletter
     submit_url: http://newsletter.altern.ai
     type: form
     auto: yes
     lang: en
-  - name: "Gist AI"
+  - name: Gist AI
     submit_url: https://www.gistai.tech
     type: form
     auto: yes
     lang: en
-  - name: "Elephas"
+  - name: Elephas
     submit_url: https://elephas.app
     type: form
     auto: yes
     lang: en
-  - name: "Lemmy"
+  - name: Lemmy
     submit_url: https://lemmy.co
     type: form
     auto: yes
     lang: en
-  - name: "Google Sheets Formula Generator"
+  - name: Google Sheets Formula Generator
     submit_url: https://bettersheets.co/google-sheets-formula-generator
     type: form
     auto: yes
     lang: en
-  - name: "CreateEasily"
+  - name: CreateEasily
     submit_url: https://createeasily.com
     type: form
     auto: yes
     lang: en
-  - name: "Emilio"
+  - name: Emilio
     submit_url: https://getemil.io
     type: form
     auto: yes
     lang: en
-  - name: "Huntr AI Resume Builder"
+  - name: Huntr AI Resume Builder
     submit_url: https://huntr.co/product/ai-resume-builder
     type: form
     auto: yes
     lang: en
-  - name: "SiteGPT"
+  - name: SiteGPT
     submit_url: https://sitegpt.ai
     type: form
     auto: yes
     lang: en
-  - name: "GPTHelp.ai"
+  - name: GPTHelp.ai
     submit_url: https://gpthelp.ai
     type: form
     auto: yes
     lang: en
-  - name: "Never Jobless LinkedIn Message Generator"
+  - name: Never Jobless LinkedIn Message Generator
     submit_url: https://neverjobless.com
     type: form
     auto: yes
     lang: en
-  - name: "StockPhotoAI.net"
+  - name: StockPhotoAI.net
     submit_url: https://www.stockphotoai.net
     type: form
     auto: yes
     lang: en
-  - name: "Aispect"
+  - name: Aispect
     submit_url: https://aispect.io
     type: form
     auto: yes
     lang: en
-  - name: "PressPulse AI"
+  - name: PressPulse AI
     submit_url: https://www.presspulse.ai
     type: form
     auto: yes
     lang: en
-  - name: "GummySearch"
+  - name: GummySearch
     submit_url: https://gummysearch.com
     type: form
     auto: yes
     lang: en
-  - name: "Taplio"
+  - name: Taplio
     submit_url: https://taplio.com
     type: form
     auto: yes
     lang: en
-  - name: "Myriad"
+  - name: Myriad
     submit_url: https://www.namepepper.com/free-tools/ai-content-prompt-tool
     type: form
     auto: yes
     lang: en
-
-# ============================================================
-# Community-curated directories (from ShaikhWarsi/free-ai-tools, 3 new, added 2026-08-16)
-# Run scripts/probe-blogs.mjs-style liveness check before bulk submit
-# ============================================================
 community_curated_from_ShaikhWarsi_free_ai_tools:
-
-  - name: "Stars"
+  - name: Stars
     submit_url: https://img.shields.io/github/stars/ShaikhWarsi/free-ai-tools
     type: form
     auto: yes
     lang: en
-  - name: "Documentation"
+  - name: Documentation
     submit_url: https://docs.trae.ai/ide/new-plans-and-billing
     type: form
     auto: yes
     lang: en
-  - name: "Usage-Based Billing Announcement (Apr 27, 2026)"
+  - name: Usage-Based Billing Announcement (Apr 27, 2026)
     submit_url: https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing
     type: form
     auto: yes
     lang: en
-
-# ============================================================
-# Community-curated directories (from best-of-ai/best-of-ai, 4 new, added 2026-08-16)
-# Run scripts/probe-blogs.mjs-style liveness check before bulk submit
-# ============================================================
 community_curated_from_best_of_ai_best_of_ai:
-
-  - name: "Creately"
+  - name: Creately
     submit_url: https://creately.com
     type: form
     auto: yes
     lang: en
-  - name: "Bing Image Creator"
+  - name: Bing Image Creator
     submit_url: https://bing.com/create
     type: form
     auto: yes
     lang: en
-  - name: "Newrelic"
+  - name: Newrelic
     submit_url: https://newrelic.com
     type: form
     auto: yes
     lang: en
-  - name: "Applitools"
+  - name: Applitools
     submit_url: https://applitools.com
+    type: form
+    auto: yes
+    lang: en
+community_curated_from_cporter202_ai_agent_tools:
+  - name: Stable Video Diffusion
+    submit_url: https://stability.ai/news/stable-video-diffusion-open-ai-video-model
+    type: form
+    auto: yes
+    lang: en
+community_curated_from_youraibot_AI_Toolkit:
+  - name: How Large Language Models Will Transform Science, Society, and AI
+    submit_url: https://hai.stanford.edu/news/how-large-language-models-will-transform-science-society-and-ai
+    type: form
+    auto: yes
+    lang: en
+  - name: Create your first app using ChatGPT
+    submit_url: https://genez.io/blog/create-your-first-app-using-chatgpt
+    type: form
+    auto: yes
+    lang: en
+community_from_appscribed:
+  - name: AIToolsDirectoryList
+    submit_url: https://aitoolsdirectorylist.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: AllAIToolList
+    submit_url: https://allaitoollist.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: AppsListo
+    submit_url: https://appslisto.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: ListYourTool
+    submit_url: https://www.listyourtool.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: AIHuntList
+    submit_url: https://aihuntlist.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: LaunchList
+    submit_url: https://launch-list.org/
+    type: form
+    auto: yes
+    lang: en
+  - name: SubmitCo
+    submit_url: https://submit.co/
+    type: form
+    auto: yes
+    lang: en
+  - name: AIAgentsList
+    submit_url: https://aiagentslist.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: LetterList
+    submit_url: https://letterlist.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: SubmitATool
+    submit_url: https://submitatool.com/
+    type: form
+    auto: yes
+    lang: en
+  - name: SubmitSaaS
+    submit_url: https://submitsaas.com/
     type: form
     auto: yes
     lang: en
