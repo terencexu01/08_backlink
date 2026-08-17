@@ -64,5 +64,104 @@
     "status": "pending",
     "submitted": false,
     "verified_at": "2026-08-16"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://www.tehvidya.com/oujisama-platonic-keikaku-not-bad-for-a-free-indie-game/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "game-jrpg",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-17"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://www.tehvidya.com/played-a-year-and-a-half-of-immortal-life-its-exactly-what-i-wanted/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "game-jrpg",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-17"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://www.tehvidya.com/kitaria-fables-why-is-easy-mode-not-actually-easy/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "game-jrpg",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-17"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://www.tehvidya.com/spent-way-too-many-hours-playing-kaiyou-hotel-uminekotei-indie-simulation-game/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "game-jrpg",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-17"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://www.tehvidya.com/played-potion-permit-for-a-while-serviceable-game/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "game-jrpg",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-17"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://www.tehvidya.com/dropped-triangle-strategy-fine-game-but-ive-played-it-before/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "game-jrpg",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-17"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://www.tehvidya.com/harvestella-is-a-fantastic-game-except-for-the-combat/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "game-jrpg",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-17"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://www.tehvidya.com/115-hours-into-xenoblade-chronicles-x-almost-done/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "game-jrpg",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-17"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://www.tehvidya.com/umamusume-if-only-it-had-come-out-10-years-earlier/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "game-jrpg",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-17"
   }
 ]
