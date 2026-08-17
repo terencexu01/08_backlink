@@ -31,5 +31,71 @@
     "status": "pending",
     "submitted": false,
     "verified_at": "2026-08-12"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://blogs.uww.edu/artofmakai/2021/03/23/hyper-light-drifter-the-game-that-taught-me-how-to-play-video-games/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "game",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-16"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://holdtoreset.com/where-is-the-shipwreck-today-in-gta-online/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "game",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-16"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://cantstayoutofthekitchen.com/2022/01/06/blueberry-walnut-overnight-oatmeal/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "game",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-16"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://poppyandgrace.com/2017/09/raleys-lilo-and-stitch-birthday-luau/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "game",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-16"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://everythingboardgames.com/2024/11/exploring-the-world-of-online-board-games.html",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "game",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-16"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://www.repeatcrafterme.com/2019/01/crochet-moss-stitch-in-a-rectangle.html",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "game",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-16"
   }
 ]
