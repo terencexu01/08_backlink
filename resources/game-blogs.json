@@ -163,5 +163,93 @@
     "status": "pending",
     "submitted": false,
     "verified_at": "2026-08-17"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://virtualmoose.org/2026/08/12/check-out-the-new-dos-game-europa-panic/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "game",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-17"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://virtualmoose.org/2026/08/02/new-bundle-to-support-game-workers-launches/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "game",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-17"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://virtualmoose.org/2026/07/29/adventure-games-are-doing-just-fine-july-2026-edition/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "game",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-17"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://virtualmoose.org/2026/07/25/physical-media-for-pc-games-still-exists/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "game",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-17"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://infinityretro.com/best-ps3-rpgs/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "game",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-17"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://infinityretro.com/best-action-rpgs/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "game",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-17"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://infinityretro.com/top-15-games-that-pushed-the-sega-saturn/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "game",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-17"
+  },
+  {
+    "type": "blog_comment",
+    "url": "https://infinityretro.com/top-100-best-game-boy-games/",
+    "has_url_field": true,
+    "has_captcha": false,
+    "link_strategy": "url_field",
+    "theme": "game",
+    "status": "pending",
+    "submitted": false,
+    "verified_at": "2026-08-17"
   }
 ]
